@@ -4,8 +4,6 @@ import express from "express";
 
 import "express-async-errors";
 
-import "reflect-metadata";
-
 import { appRoutes } from "./routes";
 
 import { handleErrorMiddleware } from "./middlewares/handleError.middleware";
