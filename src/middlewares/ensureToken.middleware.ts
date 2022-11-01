@@ -20,7 +20,7 @@ const authTokenMiddleware = (
         return res.status(401).json({ message: "Invalid Token." });
       }
       req.userId = decoded.sub;
-      req.userIsDoctor = decoded.isMedical;
+      req.userIsDoctor = decoded.isDoctor;
 
       return next();
     }
