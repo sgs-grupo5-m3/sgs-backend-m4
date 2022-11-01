@@ -4,7 +4,6 @@ export interface IUserLogin {
 }
 
 export interface IUserAllergy {
-    id: string
     name: string
     description: string
 }
