@@ -21,7 +21,7 @@ export class Patient {
     @Column({ length: 120 })
     password: string
 
-    @Column({ unique: true })
+    @Column({ unique: true, length: 20 })
     cpf: string
 
     @Column({ default: false })
