@@ -4,10 +4,10 @@ import { createAllergyController } from "../controllers/patient/createAllergy.co
 
 const router = Router()
 
-const allergyRouter = () => {
-    router.post("/allergy", createAllergyController )
+const patientRouter = () => {
+    router.post("/allergy",createAllergyController)
 
     return router
 }
 
-export default allergyRouter
+export default patientRouter

@@ -1,7 +1,7 @@
 import { Request, Response } from "express"
 import { IUserAllergy } from "../../interfaces/user"
 
-import createAllergyService from "../../services/patient/allergyUser.service"
+import createAllergyService from "../../services/patient/createAllergy.service"
 
 // import { handleError, AppError } from "../erros/AppErro"
 
