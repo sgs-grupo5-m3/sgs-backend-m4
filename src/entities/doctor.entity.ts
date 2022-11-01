@@ -1,6 +1,10 @@
 import { Exclude } from "class-transformer";
 import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 
+<<<<<<< HEAD
+=======
+import { Exclude } from "class-transformer";
+>>>>>>> 936c83c3c02329e7a38b98d1c384dbcbb7be6dac
 
 @Entity("doctor")
 export class Doctor {

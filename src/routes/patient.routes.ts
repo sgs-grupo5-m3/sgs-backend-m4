@@ -13,6 +13,7 @@ const patientRouter = () => {
     createPatientController
   );
   router.post("/allergy",createAllergyController)
+
   return router;
 };
 
