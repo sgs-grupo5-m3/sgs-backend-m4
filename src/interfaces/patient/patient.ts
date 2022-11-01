@@ -5,3 +5,9 @@ export interface IPatientCreate {
   password: string;
   cpf: string;
 }
+
+export interface IMedicinesRequest {
+  name: string;
+  description?: string;
+  patient: string;
+}
