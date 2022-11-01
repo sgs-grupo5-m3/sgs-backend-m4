@@ -3,7 +3,7 @@ import { IUserAllergy } from "../../interfaces/patient/patient"
 
 import createAllergyService from "../../services/patient/createAllergy.service"
 
-// import { handleError, AppError } from "../erros/AppErro"
+import { handleError, AppError } from "../../erros/AppErro"
 
 const createAllergyController = async (request: Request, response: Response)=>{
     try {
