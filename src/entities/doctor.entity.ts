@@ -1,3 +1,4 @@
+import { Exclude } from "class-transformer";
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
 
 @Entity('doctor')
@@ -16,13 +17,14 @@ export class Doctor {
 
     @Column({ length: 120 })
     password: string
+    @Exclude()
 
-    @Column({ unique: true })
+    @Column({ unique: true, length: 20 })
     cpf: string
 
     @Column({ default: true })
     isDoctor: boolean
 
-    @Column({ unique: true })
+    @Column({ unique: true, length: 20 })
     crm: string
 }
