@@ -1,6 +1,6 @@
 import { Request, Response } from "express"
 import diseaseListService from "../../services/patientInformation/listDiease.service"
-// import { handleError, AppError } from "../erros/AppErro"
+import { handleError, AppError } from "../../erros/AppErro"
 
 const diseaseListController = async (req: Request, res: Response) => {
     const id:string = req.params.id
@@ -9,9 +9,9 @@ const diseaseListController = async (req: Request, res: Response) => {
         
             return res.status(200).json(diease)
         } catch (err) {
-            // if (err instanceof AppError) {
-            //     handleError(err, res)
-            // }
+            if (err instanceof AppError) {
+                handleError(err, res)
+            }
         }
 }
 

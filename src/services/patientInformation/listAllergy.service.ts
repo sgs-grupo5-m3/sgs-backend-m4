@@ -1,6 +1,6 @@
 import { AppDataSource } from "../../data-source"
 import { Patient } from "../../entities/patient.entity"
-
+import { AppError } from "../../errors/appError"
 
 const allergyListService = async (id:string) => {
 
@@ -14,9 +14,9 @@ const allergyListService = async (id:string) => {
           allergy: true
         }
       })
-    //   if(allergy![0]===undefined){
-    //     throw new AppError(404,'Id not found')
-    //   } 
+      if(allergy![0]===undefined){
+        throw new AppError(404,'Id not found')
+      } 
     return allergy!
 }
 

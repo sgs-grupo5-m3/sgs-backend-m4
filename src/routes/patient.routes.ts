@@ -7,11 +7,11 @@ import { patientCreateSchema } from "../serializers";
 const router = Router();
 
 const patientRouter = () => {
-  // router.post(
-  //   "",
-  //   validateRequest(patientCreateSchema),
-  //   createPatientController
-  // );
+  router.post(
+    "",
+    validateRequest(patientCreateSchema),
+    createPatientController
+  );
   router.post("/allergy",createAllergyController)
   return router;
 };
