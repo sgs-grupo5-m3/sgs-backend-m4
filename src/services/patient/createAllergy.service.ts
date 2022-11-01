@@ -1,6 +1,6 @@
 import { AppDataSource } from "../../data-source"
 import { Allergy } from "../../entities/allergy.entiry"
-import { IUserAllergy } from "../../interfaces/user"
+import { IUserAllergy } from "../../interfaces/patient/patient"
 
 const createAllergyService = async ({ name, description }: IUserAllergy): Promise<Allergy> => {
   const allergyRepository = AppDataSource.getRepository(Allergy)

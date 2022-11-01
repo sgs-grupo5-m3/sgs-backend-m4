@@ -3,8 +3,11 @@ import * as express from "express";
 declare global {
   namespace Express {
     interface Request {
-      userId: string;
-      userIsDoctor: boolean;
+      validatedBody: object;
+      user: {
+        id: string;
+        isDoctor: boolean;
+      };
     }
   }
 }

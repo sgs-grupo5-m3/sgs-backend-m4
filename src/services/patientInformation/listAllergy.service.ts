@@ -14,7 +14,7 @@ const allergyListService = async (id:string) => {
           allergy: true
         }
       })
-    //   if(category![0]===undefined){
+    //   if(allergy![0]===undefined){
     //     throw new AppError(404,'Id not found')
     //   } 
     return allergy!

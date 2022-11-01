@@ -13,7 +13,7 @@ const diseaseListService = async (id:string) => {
           disease: true
         }
       })
-    //   if(category![0]===undefined){
+    //   if(disease![0]===undefined){
     //     throw new AppError(404,'Id not found')
     //   } 
     return disease!

@@ -1,5 +1,5 @@
 import { Request, Response } from "express"
-import { IUserAllergy } from "../../interfaces/user"
+import { IUserAllergy } from "../../interfaces/patient/patient"
 
 import createAllergyService from "../../services/patient/createAllergy.service"
 

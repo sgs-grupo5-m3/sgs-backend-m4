@@ -13,7 +13,7 @@ const examListService = async (id:string) => {
           exam: true
         }
       })
-    //   if(category![0]===undefined){
+    //   if(exam![0]===undefined){
     //     throw new AppError(404,'Id not found')
     //   } 
     return exam!
