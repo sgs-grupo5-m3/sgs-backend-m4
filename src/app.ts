@@ -1,14 +1,13 @@
 import express from "express";
 import { appRoutes } from "./routes";
 import { handleErrorMiddleware } from "./middlewares/handleError.middleware";
-import { Request, Response } from "express";
 import sessionRouter from "./routes/session.routes";
 
 const app = express();
 
 app.use(express.json());
 
-app.use('/login', sessionRouter)
+app.use("/login", sessionRouter);
 
 appRoutes(app);
 

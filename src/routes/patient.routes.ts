@@ -1,5 +1,6 @@
 import { Router } from "express";
 import createPatientController from "../controllers/patient/createPatient.controller";
+import createUserMiddleware from "../middlewares/createUser.middleware";
 import validateRequest from "../middlewares/validateRequest.middleware";
 import { patientCreateSchema } from "../serializers";
 
@@ -9,6 +10,7 @@ const patientRouter = () => {
   router.post(
     "",
     validateRequest(patientCreateSchema),
+    createUserMiddleware,
     createPatientController
   );
 
