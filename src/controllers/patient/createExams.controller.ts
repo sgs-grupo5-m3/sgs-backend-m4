@@ -4,7 +4,7 @@ import createExamsService from "../../services/patient/createExams.service";
 const createExamsController = async (req: Request, res: Response) => {
   const { name, date, results_exams } = req.body;
 
-  const userId = req.userId;
+  const userId = req.user.id;
 
   const newExams = await createExamsService({
     name,
