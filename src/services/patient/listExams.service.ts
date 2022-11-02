@@ -1,10 +1,22 @@
 import { AppDataSource } from "../../data-source";
 import { Exam } from "../../entities/exam.entity";
+import { Patient } from "../../entities/patient.entity";
 
-const listExamsService = async () => {
+const listExamsService = async (id: string) => {
+  const patientRepository = AppDataSource.getRepository(Patient);
   const examsRepository = AppDataSource.getRepository(Exam);
 
-  const exams = examsRepository.find();
+  const patientFind = await patientRepository.findOne({
+    where: {
+      id,
+    },
+  });
+
+  const exams = examsRepository.find({
+    where: {
+      patient: patientFind!,
+    },
+  });
 
   return exams;
 };

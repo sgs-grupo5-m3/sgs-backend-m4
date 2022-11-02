@@ -2,7 +2,7 @@ import { AppDataSource } from "../../data-source";
 import { Medicines } from "../../entities/medicines.entity";
 import { Patient } from "../../entities/patient.entity";
 import { AppError } from "../../errors/appError";
-import { IMedicinesRequest } from "../../interfaces/patient/patient";
+import { IMedicinesRequest } from "../../interfaces/patient";
 
 const createMedicineService = async ({
   name,

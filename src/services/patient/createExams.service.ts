@@ -1,7 +1,7 @@
 import { AppDataSource } from "../../data-source";
-import { IExamsCreate } from "../../interfaces/patient/patient";
 import { Exam } from "../../entities/exam.entity";
 import { Patient } from "../../entities/patient.entity";
+import { IExamsCreate } from "../../interfaces/patient";
 
 const createExamsService = async ({
   name,
