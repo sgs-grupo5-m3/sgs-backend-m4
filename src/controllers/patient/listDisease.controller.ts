@@ -2,9 +2,9 @@ import { Request, Response } from "express";
 import listDiseasesService from "../../services/patient/listDiseases.service";
 
 const listDiseasesController = async (req: Request, res: Response) => {
-  const userId = req.user.id;
 
-  const diseases = await listDiseasesService(userId);
+  const id = req.user.id;
+  const diseases = await listDiseasesService(id);
 
   return res.json(diseases);
 };
