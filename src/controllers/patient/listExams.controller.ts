@@ -2,10 +2,11 @@ import { Request, Response } from "express";
 import listExamsService from "../../services/patient/listExams.service";
 
 const listExamsController = async (req: Request, res: Response) => {
-  const id = req.user.id;
-  const exams = await listExamsService(id);
+  const userId = req.user.id;
 
-  return res.status(200).json(exams);
+  const exams = await listExamsService(userId);
+
+  return res.status(200).json({ exams });
 };
 
 export default listExamsController;

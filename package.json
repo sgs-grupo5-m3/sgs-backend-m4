@@ -11,6 +11,7 @@
     "test": "NODE_ENV=test jest"
   },
   "dependencies": {
+    "@types/yup": "^0.32.0",
     "bcrypt": "^5.1.0",
     "class-transformer": "^0.5.1",
     "dotenv": "^16.0.3",

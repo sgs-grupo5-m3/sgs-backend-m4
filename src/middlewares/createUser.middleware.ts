@@ -18,7 +18,7 @@ const createUserMiddleware = async (
   );
   const patientCpfAleradyExists = patients.find((user) => user.cpf === cpf);
   if (patientEmailAleradyExists || patientCpfAleradyExists) {
-    throw new AppError(400, "User already exists");
+    throw new AppError(409, "User already exists");
   }
 
   const doctorRepository = AppDataSource.getRepository(Doctor);
@@ -31,7 +31,7 @@ const createUserMiddleware = async (
     doctorCpfAleradyExists ||
     doctorCrmAleradyExists
   ) {
-    throw new AppError(400, "User already exists");
+    throw new AppError(409, "User already exists");
   }
 
   next();

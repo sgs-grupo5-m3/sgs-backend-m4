@@ -1,25 +1,24 @@
 import { AppDataSource } from "../../data-source";
+import { IExamsRequest } from "../../interfaces/patient";
 import { Exam } from "../../entities/exam.entity";
 import { Patient } from "../../entities/patient.entity";
-import { IExamsCreate } from "../../interfaces/patient";
 
 const createExamsService = async ({
   name,
   date,
   results_exams,
   userId,
-}: IExamsCreate) => {
+}: IExamsRequest): Promise<Exam> => {
   const examsRepositorey = AppDataSource.getRepository(Exam);
   const patientRepositorey = AppDataSource.getRepository(Patient);
 
-  const patients = await patientRepositorey.find();
-  const patientFind = patients.find((item) => item.id === userId);
+  const patientFind = await patientRepositorey.findOneBy({ id: userId });
 
   const exam = await examsRepositorey.save({
     name,
     date,
     results_exams,
-    patient: patientFind,
+    patient: patientFind!,
   });
 
   return exam;

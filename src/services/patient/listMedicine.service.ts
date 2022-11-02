@@ -6,11 +6,7 @@ const listMedicineService = async (id: string) => {
   const patientRepository = AppDataSource.getRepository(Patient);
   const medicinesRepository = AppDataSource.getRepository(Medicines);
 
-  const patientFind = await patientRepository.findOne({
-    where: {
-      id,
-    },
-  });
+  const patientFind = await patientRepository.findOneBy({ id });
 
   const medicines = await medicinesRepository.find({
     where: {

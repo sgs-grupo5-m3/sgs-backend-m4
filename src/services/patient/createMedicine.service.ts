@@ -20,15 +20,13 @@ const createMedicineService = async ({
     throw new AppError(400, "id de usuario não encontrado");
   }
 
-  const medici = new Medicines();
-  medici.name = name;
-  medici.description = description;
-  medici.patient = patientFind;
+  const medicine = await medicinesRepository.save({
+    name,
+    description,
+    patient: patientFind!,
+  });
 
-  const newMedici = medicinesRepository.create(medici);
-  await medicinesRepository.save(medici);
-
-  return newMedici;
+  return medicine;
 };
 
 export default createMedicineService;
