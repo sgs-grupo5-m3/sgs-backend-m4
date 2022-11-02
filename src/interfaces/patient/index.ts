@@ -1,4 +1,4 @@
-export interface IPatientCreate {
+export interface IPatientRequest {
   name: string;
   birth_date: string;
   email: string;
@@ -24,11 +24,21 @@ export interface IMedicinesRequest {
   patient: string;
 }
 
-export interface IExamsCreate {
+export interface IMedicinesSerilizer {
+  name: string;
+  description?: string;
+}
+
+export interface IExamsRequest {
   name: string;
   date: string;
   results_exams: string;
   userId: string;
+}
 
+export interface IExamsSerilizer {
+  name: string;
+  date: string;
+  results_exams: string;
 }
 

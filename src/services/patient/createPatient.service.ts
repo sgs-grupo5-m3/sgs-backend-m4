@@ -1,6 +1,6 @@
 import { AppDataSource } from "../../data-source";
 import { Patient } from "../../entities/patient.entity";
-import { IPatientCreate } from "../../interfaces/patient";
+import { IPatientRequest } from "../../interfaces/patient";
 
 import { hashSync } from "bcrypt";
 
@@ -10,7 +10,7 @@ const createPatientService = async ({
   email,
   password,
   cpf,
-}: IPatientCreate) => {
+}: IPatientRequest): Promise<Patient> => {
   const patientRepositorey = AppDataSource.getRepository(Patient);
 
   const patient = await patientRepositorey.save({
