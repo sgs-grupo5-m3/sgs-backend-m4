@@ -10,7 +10,7 @@ export class Allergy {
   name: string;
 
   @Column({ type: "text", nullable: true })
-  description: string;
+  description?: string;
 
   @ManyToOne((type) => Patient, {
     eager: true,

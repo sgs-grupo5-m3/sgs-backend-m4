@@ -10,7 +10,7 @@ export class Disease {
     name: string
 
     @Column({ type: "text", nullable: true })
-    symptoms: string
+    symptoms?: string
 
     @ManyToOne((type) => Patient,{
         eager: true
