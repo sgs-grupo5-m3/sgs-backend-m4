@@ -8,8 +8,6 @@ import { appRoutes } from "./routes";
 
 import { handleErrorMiddleware } from "./middlewares/handleError.middleware";
 
-import "express-async-errors";
-
 const app = express();
 
 app.use(express.json());
