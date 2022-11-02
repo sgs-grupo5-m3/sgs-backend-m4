@@ -1,22 +1,19 @@
 import { Request, Response } from "express"
-import { IUserAllergy } from "../../interfaces/patient/patient"
-
+import { IAllergyCreate } from "../../interfaces/patient/patient"
 import createAllergyService from "../../services/patient/createAllergy.service"
 
-import { handleError, AppError } from "../../erros/AppErro"
+const createAllergyController = async (req: Request, res: Response)=>{
+    const { name, description }:IAllergyCreate = req.body
 
-const createAllergyController = async (request: Request, response: Response)=>{
-    try {
-        const allergy:IUserAllergy = request.body
-        const createdAllergy = await createAllergyService(allergy)
-        return response.status(201).json(createdAllergy)
+    const userId = req.userId;
 
-     } catch (error) {
-        if(error instanceof Error)
-        return response.status(400).json({
-            message: error.message
-        })
-    }
+    const newAllergy = await createAllergyService({ 
+        name, 
+        description, 
+        userId
+    });
+
+    return res.status(201).json(newAllergy);
 }
 
-export { createAllergyController }
+export default createAllergyController 

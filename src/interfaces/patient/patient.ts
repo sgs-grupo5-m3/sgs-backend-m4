@@ -5,11 +5,25 @@ export interface IPatientCreate {
   password: string;
   cpf: string;
 }
-<<<<<<< HEAD
 
-export interface IUserAllergy {
-  name: string
-  description: string
+
+
+export interface IAllergyCreate {
+  name: string;
+  description: string;
+  userId: string;
 }
-=======
->>>>>>> 936c83c3c02329e7a38b98d1c384dbcbb7be6dac
+
+export interface IDiseaseCreate {
+  name: string;
+  symptoms: string;
+  userId: string;
+}
+
+export interface IExamsCreate {
+  name: string;
+  date: string;
+  results_exams: string;
+  userId: string;
+}
+

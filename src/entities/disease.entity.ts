@@ -16,5 +16,4 @@ export class Disease {
         eager: true
     }) 
     patient: Patient
-
 }
