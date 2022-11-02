@@ -1,19 +1,13 @@
 import { Router } from "express";
-import createMedicineController from "../controllers/medicines/createMedicines.controller";
-import listMedicinesController from "../controllers/medicines/listMedicines.controller";
-import authIsAdmMiddleware from "../middlewares/ensureDoctor.middleware";
+import createMedicineController from "../controllers/patient/createMedicines.controller";
+import listMedicinesController from "../controllers/patient/listMedicines.controller";
 import authTokenMiddleware from "../middlewares/ensureToken.middleware";
 
 const router = Router();
 
 const medicinesRouter = () => {
   router.post("", authTokenMiddleware, createMedicineController);
-  router.get(
-    "",
-    authTokenMiddleware,
-    authIsAdmMiddleware,
-    listMedicinesController
-  );
+  router.get("", authTokenMiddleware, listMedicinesController);
 
   return router;
 };
