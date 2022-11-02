@@ -1,3 +1,4 @@
+import { instanceToPlain } from "class-transformer";
 import { Request, Response } from "express";
 import { IPatientCreate } from "../../interfaces/patient/patient";
 import createPatientService from "../../services/patient/createPatient.service";
@@ -14,7 +15,7 @@ const createPatientController = async (req: Request, res: Response) => {
     cpf,
   });
 
-  res.status(201).json(patient);
+  return res.status(201).json(instanceToPlain(patient));
 };
 
 export default createPatientController;
