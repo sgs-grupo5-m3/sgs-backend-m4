@@ -1,11 +1,10 @@
 import { AppDataSource } from "../../data-source";
-import { Allergy } from "../../entities/allergy.entiry";
+import { Medicines } from "../../entities/medicines.entity";
 import { Patient } from "../../entities/patient.entity";
 
-const listAllergyService = async (id:string) => {
-
-  const allergyRepository = AppDataSource.getRepository(Allergy);
+const listMedicineService = async (id: string) => {
   const patientRepository = AppDataSource.getRepository(Patient);
+  const medicinesRepository = AppDataSource.getRepository(Medicines);
 
   const patientFind = await patientRepository.findOne({
     where: {
@@ -13,13 +12,13 @@ const listAllergyService = async (id:string) => {
     },
   });
 
-  const allergys = await allergyRepository.find({
+  const medicines = await medicinesRepository.find({
     where: {
       patient: patientFind!,
     },
   });
 
-  return allergys;
+  return medicines;
 };
 
-export default listAllergyService;
+export default listMedicineService;

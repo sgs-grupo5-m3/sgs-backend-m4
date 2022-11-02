@@ -1,26 +1,35 @@
 import { AppDataSource } from "../../data-source"
 import { Allergy } from "../../entities/allergy.entiry"
-import { IAllergyCreate } from "../../interfaces/patient/patient"
+import { IAllergyCreate } from "../../interfaces/patient"
 import { Patient } from "../../entities/patient.entity"
+import { AppError } from "../../errors/appError"
 
 const createAllergyService = async ({ 
   name,
   description,
-  userId 
-  }: IAllergyCreate): Promise<Allergy> => {
+  patient 
+  }: IAllergyCreate ): Promise<Allergy> => {
 
   const allergyRepository = AppDataSource.getRepository(Allergy)
   const patientRepositorey = AppDataSource.getRepository(Patient);
 
-  const patients = await patientRepositorey.find();
-  const patientFind = patients.find((item) => item.id === userId);
+  const patientFind = await patientRepositorey.findOneBy({
+    id: patient
+  });
 
-  const allergy = allergyRepository.save({
-      name,
-      description
-  })
- 
-  return allergy
+  if (!patientFind) {
+    throw new AppError(400, "id de usuario não encontrado");
+  }
+
+  const allergy = new Allergy();
+  allergy.name = name;
+  allergy.description = description;
+  allergy.patient = patientFind;
+
+  const newAllergy = allergyRepository.create(allergy);
+  await allergyRepository.save(allergy);
+
+  return newAllergy
 }
 
 export default createAllergyService;

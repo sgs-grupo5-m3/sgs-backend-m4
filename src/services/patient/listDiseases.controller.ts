@@ -1,12 +1,24 @@
 import { AppDataSource } from "../../data-source";
 import { Disease } from "../../entities/disease.entity";
+import { Patient } from "../../entities/patient.entity";
 
-const listDiseasesService = async () => {
+const listDiseasesService = async (id:string) => {
+  const patientRepository = AppDataSource.getRepository(Patient);
   const diseaseRepository = AppDataSource.getRepository(Disease);
 
-  const diseases = diseaseRepository.find();
+  const patientFind = await patientRepository.findOne({
+    where: {
+      id,
+    },
+  });
 
-  return diseases;
+  const disease = await diseaseRepository.find({
+    where: {
+      patient: patientFind!,
+    },
+  });
+
+  return disease;
 };
 
 export default listDiseasesService;
