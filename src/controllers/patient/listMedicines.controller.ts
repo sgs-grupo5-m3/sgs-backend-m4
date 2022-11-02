@@ -1,10 +1,9 @@
 import { Request, Response } from "express";
-import { deflate } from "zlib";
-import listMedicine from "../../services/medicines/listMedicine.service";
+import listMedicineService from "../../services/patient/listMedicine.service";
 
 const listMedicinesController = async (req: Request, res: Response) => {
   const cpf = req.body;
-  const medicines = await listMedicine(cpf);
+  const medicines = await listMedicineService(cpf);
 
   return res.json(medicines);
 };
