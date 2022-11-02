@@ -1,18 +1,19 @@
-import { Request, Response } from "express"
-import { IAllergyCreate } from "../../interfaces/patient"
-import createAllergyService from "../../services/patient/createAllergy.service"
+import { Request, Response } from "express";
+import { IAllergySerializer } from "../../interfaces/patient";
+import createAllergyService from "../../services/patient/createAllergy.service";
 
-const createAllergyController = async (req: Request, res: Response)=>{
-    const { name, description }:IAllergyCreate = req.body
+const createAllergyController = async (req: Request, res: Response) => {
+  const { name, description }: IAllergySerializer =
+    req.validatedBody as IAllergySerializer;
 
-    const patient = req.user.id;
+  const userId = req.user.id;
 
-    const newAllergy = await createAllergyService({ name, description, patient});
+  const newAllergy = await createAllergyService({ name, description, userId });
 
-    return res.status(201).json({
-        message: "Alergia Cadastrada!",
-        newAllergy,
-      });
-}
+  return res.status(201).json({
+    message: "Alergia Cadastrada!",
+    newAllergy,
+  });
+};
 
-export default createAllergyController 
+export default createAllergyController;

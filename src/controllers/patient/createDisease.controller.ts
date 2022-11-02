@@ -1,20 +1,21 @@
 import { Request, Response } from "express";
 import createDiseaseService from "../../services/patient/createDisease.service";
-import { IDiseaseCreate } from "../../interfaces/patient";
+import { IDiseaseRequest, IDiseaseSerializer } from "../../interfaces/patient";
 
 const createDiseaseController = async (req: Request, res: Response) => {
-  const { name, symptoms }:IDiseaseCreate = req.body;
+  const { name, symptoms }: IDiseaseSerializer =
+    req.validatedBody as IDiseaseSerializer;
 
-  const patient = req.user.id;
+  const userId = req.user.id;
 
   const newDisease = await createDiseaseService({
     name,
     symptoms,
-    patient,
+    userId,
   });
 
   return res.status(201).json({
-    message: "Doensa Cadastrada!",
+    message: "Doença Cadastrada!",
     newDisease,
   });
 };
