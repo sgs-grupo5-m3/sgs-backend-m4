@@ -1,5 +1,5 @@
 import { AppDataSource } from "../../data-source";
-import { IDiseaseCreate } from "../../interfaces/patient";
+import { IDiseaseRequest } from "../../interfaces/patient";
 import { Disease } from "../../entities/disease.entity";
 import { Patient } from "../../entities/patient.entity";
 import { AppError } from "../../errors/appError";
@@ -7,28 +7,22 @@ import { AppError } from "../../errors/appError";
 const createDiseaseService = async ({
   name,
   symptoms,
-  patient,
-}: IDiseaseCreate) => {
+  userId,
+}: IDiseaseRequest) => {
   const diseaseRepositorey = AppDataSource.getRepository(Disease);
   const patientRepositorey = AppDataSource.getRepository(Patient);
 
   const patientFind = await patientRepositorey.findOneBy({
-    id: patient
+    id: userId,
   });
 
-  if (!patientFind) {
-    throw new AppError(400, "id de usuario não encontrado");
-  }
+  const disease = await diseaseRepositorey.save({
+    name,
+    symptoms,
+    patient: patientFind!,
+  });
 
-  const disease = new Disease();
-  disease.name = name;
-  disease.symptoms = symptoms;
-  disease.patient = patientFind;
-
-  const newDisease = diseaseRepositorey.create(disease);
-  await diseaseRepositorey .save(disease);
-
-  return newDisease
+  return disease;
 };
 
 export default createDiseaseService;

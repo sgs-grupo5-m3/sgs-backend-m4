@@ -6,16 +6,26 @@ export interface IPatientRequest {
   cpf: string;
 }
 
-export interface IAllergyCreate {
+export interface IAllergyRequest {
   name: string;
-  description: string;
-  patient: string;
+  description?: string;
+  userId: string;
 }
 
-export interface IDiseaseCreate {
+export interface IAllergySerializer {
   name: string;
-  symptoms: string;
-  patient: string;
+  description?: string;
+}
+
+export interface IDiseaseRequest {
+  name: string;
+  symptoms?: string;
+  userId: string;
+}
+
+export interface IDiseaseSerializer {
+  name: string;
+  symptoms?: string;
 }
 
 export interface IMedicinesRequest {
@@ -41,4 +51,3 @@ export interface IExamsSerilizer {
   date: string;
   results_exams: string;
 }
-

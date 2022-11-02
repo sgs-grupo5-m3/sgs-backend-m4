@@ -2,6 +2,8 @@ import * as yup from "yup";
 
 import { SchemaOf } from "yup";
 import {
+  IAllergySerializer,
+  IDiseaseSerializer,
   IExamsSerilizer,
   IMedicinesSerilizer,
   IPatientRequest,
@@ -29,3 +31,17 @@ export const examsCreateSchema: SchemaOf<IExamsSerilizer> = yup.object().shape({
   date: yup.string().required(),
   results_exams: yup.string().required(),
 });
+
+export const allergiesCreateSchema: SchemaOf<IAllergySerializer> = yup
+  .object()
+  .shape({
+    name: yup.string().required(),
+    description: yup.string().notRequired(),
+  });
+
+export const diseasesCreateSchema: SchemaOf<IDiseaseSerializer> = yup
+  .object()
+  .shape({
+    name: yup.string().required(),
+    symptoms: yup.string().notRequired(),
+  });
