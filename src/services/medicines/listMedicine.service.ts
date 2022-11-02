@@ -2,12 +2,12 @@ import { AppDataSource } from "../../data-source";
 import { Patient } from "../../entities/patient.entity";
 import { AppError } from "../../errors/appError";
 
-const listMedicineService = async (id: string) => {
+const listMedicineService = async (cpf: string) => {
   const patientRepository = AppDataSource.getRepository(Patient);
 
   const patientFind = await patientRepository.findOne({
     where: {
-      id,
+      cpf,
     },
   });
 
