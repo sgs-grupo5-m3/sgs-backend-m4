@@ -6,9 +6,16 @@ export interface IPatientCreate {
   cpf: string;
 }
 
+export interface IMedicinesRequest {
+  name: string;
+  description?: string;
+  patient: string;
+}
+
 export interface IExamsCreate {
   name: string;
   date: string;
   results_exams: string;
   userId: string;
+
 }
