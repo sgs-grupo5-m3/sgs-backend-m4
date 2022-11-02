@@ -3,8 +3,8 @@ import { deflate } from "zlib";
 import listMedicine from "../../services/medicines/listMedicine.service";
 
 const listMedicinesController = async (req: Request, res: Response) => {
-  const id = req.user.id;
-  const medicines = await listMedicine(id);
+  const cpf = req.body;
+  const medicines = await listMedicine(cpf);
 
   return res.json(medicines);
 };
