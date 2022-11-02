@@ -6,6 +6,18 @@ export interface IPatientCreate {
   cpf: string;
 }
 
+export interface IAllergyCreate {
+  name: string;
+  description: string;
+  patient: string;
+}
+
+export interface IDiseaseCreate {
+  name: string;
+  symptoms: string;
+  patient: string;
+}
+
 export interface IMedicinesRequest {
   name: string;
   description?: string;
@@ -19,3 +31,4 @@ export interface IExamsCreate {
   userId: string;
 
 }
+
