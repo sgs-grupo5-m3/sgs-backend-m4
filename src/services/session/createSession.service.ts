@@ -10,7 +10,7 @@ import "dotenv/config";
 const createSessionService = async ({
   email,
   password,
-}: ISession): Promise<string> => {
+}: ISession): Promise<string | undefined> => {
   const doctorRepository = AppDataSource.getRepository(Doctor);
   const patientRepository = AppDataSource.getRepository(Patient);
 
@@ -18,43 +18,55 @@ const createSessionService = async ({
     email: email,
   });
 
-  if (!doctor) {
+  const patient = await patientRepository.findOneBy({
+    email: email,
+  });
+
+  if (!doctor && !patient) {
     throw new AppError(403, "Invalid email or password");
   }
 
-  const passwordMatch = await compare(password, doctor.password);
+  if (doctor) {
+    const passwordMatch = await compare(password, doctor.password);
 
-  if (!passwordMatch) {
-    throw new AppError(403, "Invalid email or password");
-  }
-
-  if (doctor == undefined) {
-    const patient = await patientRepository.findOneBy({
-      email: email,
-    });
-
-    if (!patient) {
+    if (!passwordMatch) {
       throw new AppError(403, "Invalid email or password");
     }
 
+    const token = jwt.sign(
+      {
+        isDoctor: doctor.isDoctor,
+      },
+      process.env.SECRET_KEY as string,
+      {
+        expiresIn: "24h",
+        subject: doctor.id,
+      }
+    );
+
+    return token;
+  }
+
+  if (patient) {
     const passwordMatch = await compare(password, patient.password);
 
     if (!passwordMatch) {
       throw new AppError(403, "Invalid email or password");
     }
-  }
 
-  const token = jwt.sign(
-    {
-      isDoctor: doctor.isDoctor,
-    },
-    process.env.SECRET_KEY as string,
-    {
-      expiresIn: "24h",
-      subject: doctor.id,
-    }
-  );
-  return token;
+    const token = jwt.sign(
+      {
+        isDoctor: patient.isDoctor,
+      },
+      process.env.SECRET_KEY as string,
+      {
+        expiresIn: "24h",
+        subject: patient.id,
+      }
+    );
+
+    return token;
+  }
 };
 
 export default createSessionService;
