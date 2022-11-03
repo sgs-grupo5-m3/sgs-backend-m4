@@ -6,10 +6,11 @@ const updateAllergyController = async (req: Request, res: Response) => {
    
         const updateAllergy: IAllergyRequest = req.body;
         const id:string = req.params.id;
-        const allergy = await updateAllergyService( updateAllergy, id );
+        const userId: string = req.user.id
+        const allergy = await updateAllergyService( updateAllergy, id, userId );
          
         return res.status(200).json({
-                message: "Alergia atualizada!",
+                message: "Allergy Update!",
                 allergy,
               });
 }

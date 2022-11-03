@@ -11,7 +11,7 @@ const createAllergyController = async (req: Request, res: Response) => {
   const allergy = await createAllergyService({ name, description, userId });
 
   return res.status(201).json({
-    message: "Alergia Cadastrada!",
+    message: "Allergy Created!",
     allergy,
   });
 };

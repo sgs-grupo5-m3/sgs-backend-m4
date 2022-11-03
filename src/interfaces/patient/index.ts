@@ -2,7 +2,7 @@ export interface IPatientRequest {
   name: string;
   birth_date: string;
   email: string;
-  password: string;
+  password?: string;
   cpf: string;
 }
 

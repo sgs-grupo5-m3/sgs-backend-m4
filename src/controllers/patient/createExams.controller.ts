@@ -15,7 +15,10 @@ const createExamsController = async (req: Request, res: Response) => {
     userId,
   });
 
-  return res.status(201).json(newExams);
+  return res.status(201).json({
+    message: "Exam Created!",
+    newExams,
+  });
 };
 
 export default createExamsController;
