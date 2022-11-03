@@ -2,7 +2,7 @@ import { Router } from "express";
 import createPatientController from "../controllers/patient/createPatient.controller";
 import createUserMiddleware from "../middlewares/createUser.middleware";
 import listExamsController from "../controllers/patient/listExams.controller";
-import authTokenMiddleware from "../middlewares/ensureToken.middleware";
+import authTokenMiddleware from "../middlewares/authToken.middleware";
 import validateRequest from "../middlewares/validateRequest.middleware";
 import {
   allergiesCreateSchema,

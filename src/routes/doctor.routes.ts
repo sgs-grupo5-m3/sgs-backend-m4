@@ -1,13 +1,20 @@
 import { Router } from "express";
 
-import createDoctorController from "../controllers/doctor/createDoctor.controller";
+import createUserMiddleware from "../middlewares/createUser.middleware";
+import authIsAdmMiddleware from "../middlewares/authIsAdm.middleware";
+import authTokenMiddleware from "../middlewares/authToken.middleware";
 import validateRequest from "../middlewares/validateRequest.middleware";
+
+import createDoctorController from "../controllers/doctor/createDoctor.controller";
+import listPatientDoctorController from "../controllers/doctor/listPatientDoctor.controller";
+
 import { doctorCreateSchema } from "../serializers";
 
 const router = Router();
 
 const doctorRouter = () => {
-  router.post("", validateRequest(doctorCreateSchema), createDoctorController);
+  router.post("", validateRequest(doctorCreateSchema), createUserMiddleware, createDoctorController);
+  router.get("/patient/:cpf", authTokenMiddleware, authIsAdmMiddleware, listPatientDoctorController)
 
   return router;
 };

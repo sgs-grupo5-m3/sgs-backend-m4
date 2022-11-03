@@ -14,14 +14,17 @@ const authTokenMiddleware = (
 
   jwt.verify(
     token as string,
-    process.env.JWT_SECRET as string,
+    process.env.SECRET_KEY as string,
     (error: any, decoded: any) => {
       if (error) {
         return res.status(401).json({ message: "Invalid Token." });
       }
-      req.user.id = decoded.sub;
-      req.user.isDoctor = decoded.isDoctor;
+        req.user = {
+          id: decoded.sub,
+          isDoctor: decoded.isDoctor
+        }
 
+      
       return next();
     }
   );

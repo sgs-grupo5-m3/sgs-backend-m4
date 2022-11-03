@@ -12,8 +12,6 @@ export class Disease {
     @Column({ type: "text", nullable: true })
     symptoms?: string
 
-    @ManyToOne((type) => Patient,{
-        eager: true
-    }) 
+    @ManyToOne((type) => Patient) 
     patient: Patient
 }

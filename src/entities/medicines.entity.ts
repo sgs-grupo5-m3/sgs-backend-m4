@@ -12,8 +12,6 @@ export class Medicines {
   @Column({ type: "text", nullable: true })
   description?: string;
 
-  @ManyToOne((type) => Patient, {
-    eager: true,
-  })
+  @ManyToOne((type) => Patient)
   patient: Patient;
 }
