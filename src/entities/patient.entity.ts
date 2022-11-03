@@ -22,8 +22,8 @@ export class Patient {
   email: string;
 
   @Column({ length: 120 })
-  @Exclude()
-  password: string;
+  @Exclude({ toPlainOnly: true })
+  password?: string;
 
   @Column({ unique: true, length: 20 })
   cpf: string;

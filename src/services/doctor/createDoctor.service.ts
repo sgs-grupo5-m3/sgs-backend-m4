@@ -10,7 +10,7 @@ const createDoctorService = async ({ name, birth_date, email, password, cpf, crm
         name: name,
         birth_date: birth_date,
         email: email,
-        password: hashSync(password, 10),
+        password: hashSync(password!, 10),
         cpf: cpf,
         crm: crm
     });

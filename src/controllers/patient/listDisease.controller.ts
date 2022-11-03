@@ -6,7 +6,7 @@ const listDiseasesController = async (req: Request, res: Response) => {
   const id = req.user.id;
   const diseases = await listDiseasesService(id);
 
-  return res.json(diseases);
+  return res.status(200).json(diseases);
 };
 
 export default listDiseasesController;

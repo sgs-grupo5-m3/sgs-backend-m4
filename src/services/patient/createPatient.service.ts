@@ -17,7 +17,7 @@ const createPatientService = async ({
     name,
     birth_date,
     email,
-    password: hashSync(password, 10),
+    password: hashSync(password!, 10),
     cpf,
   });
 

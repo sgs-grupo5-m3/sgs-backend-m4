@@ -16,7 +16,7 @@ export const AppDataSource =
         username: process.env.POSTGRES_USER,
         password: process.env.POSTGRES_PWD,
         database: process.env.POSTGRES_DB,
-        synchronize: false,
+        synchronize: true,
         logging: true,
         entities: ["src/entities/*.ts"],
         migrations: ["src/migrations/*.ts"],

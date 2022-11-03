@@ -5,18 +5,28 @@ import { AppError } from '../../errors/appError'
 
 const updateMedicineService = async({ 
     name, 
-    description }: IMedicinesRequest, id: string)
+    description }: IMedicinesRequest, id: string, userId: string)
     : Promise<Medicines | null> => {
 
     const medicineRepository = AppDataSource.getRepository(Medicines)
 
-    const findMedicine = await medicineRepository.findOneBy({
-        id
+    const findMedicine = await medicineRepository.findOne({
+        where: {
+            id: id
+        },
+        relations: {
+            patient: true
+        }
     })
    
     if(!findMedicine){
-        throw new AppError(400,"id não encontrado!")
+        throw new AppError(400,"Id not found")
     }
+
+    if(findMedicine.patient.id !== userId){
+        throw new AppError(400, "Cannot change another patient's medicine")
+    }
+
     await medicineRepository.update(
         id,
         {

@@ -14,8 +14,12 @@ const createPatientController = async (req: Request, res: Response) => {
     password,
     cpf,
   });
+  delete patient.password
 
-  return res.status(201).json(instanceToPlain(patient));
+  return res.status(201).json({
+      message: "Patient Created!",
+      patient: patient
+    });
 };
 
 export default createPatientController;

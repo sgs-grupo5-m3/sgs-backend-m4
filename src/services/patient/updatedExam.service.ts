@@ -5,18 +5,28 @@ import { AppError } from '../../errors/appError'
 
 const updateExamService = async({ 
     name, 
-    results_exams }: IExamsRequest, id: string)
+    results_exams }: IExamsRequest, id: string, userId: string)
     : Promise<Exam | null> => {
 
     const examRepository = AppDataSource.getRepository(Exam)
 
-    const findExam = await examRepository.findOneBy({
-        id
+    const findExam = await examRepository.findOne({
+        where: {
+            id: id
+        },
+        relations: {
+            patient: true
+        }
     })
    
     if(!findExam){
-        throw new AppError(400,"id não encontrado!")
+        throw new AppError(400,"Id not found")
     }
+
+    if(findExam.patient.id !== userId){
+        throw new AppError(400, "Cannot change another patient's exam")
+    }
+
     await examRepository.update(
         id,
         {

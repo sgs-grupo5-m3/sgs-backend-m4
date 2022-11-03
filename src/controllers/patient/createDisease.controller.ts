@@ -15,7 +15,7 @@ const createDiseaseController = async (req: Request, res: Response) => {
   });
 
   return res.status(201).json({
-    message: "Doença Cadastrada!",
+    message: "Disease Created!",
     newDisease,
   });
 };
