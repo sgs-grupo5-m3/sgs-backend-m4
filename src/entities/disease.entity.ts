@@ -1,17 +1,17 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
 import { Patient } from "./patient.entity";
 
-@Entity('disease')
+@Entity("disease")
 export class Disease {
-    @PrimaryGeneratedColumn("uuid")
-    id: string
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
-    @Column({ length: 120 })
-    name: string
+  @Column({ length: 120 })
+  name: string;
 
-    @Column({ type: "text", nullable: true })
-    symptoms?: string
+  @Column({ type: "text", nullable: true })
+  symptoms?: string;
 
-    @ManyToOne((type) => Patient) 
-    patient: Patient
+  @ManyToOne((type) => Patient)
+  patient: Patient;
 }

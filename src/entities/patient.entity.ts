@@ -32,22 +32,22 @@ export class Patient {
   isDoctor: boolean;
 
   @OneToMany((type) => Disease, (disease) => disease.patient, {
-    eager: true
+    eager: true,
   })
   disease: Disease[];
 
   @OneToMany((type) => Exam, (exam) => exam.patient, {
-    eager: true
+    eager: true,
   })
   exam: Exam[];
 
   @OneToMany((type) => Allergy, (allergy) => allergy.patient, {
-    eager: true
+    eager: true,
   })
   allergy: Allergy[];
 
   @OneToMany((type) => Medicines, (medicines) => medicines.patient, {
-    eager: true 
+    eager: true,
   })
   medicines: Medicines[];
 }
