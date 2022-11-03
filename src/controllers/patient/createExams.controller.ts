@@ -1,10 +1,8 @@
 import { Request, Response } from "express";
-import { IExamsSerilizer } from "../../interfaces/patient";
 import createExamsService from "../../services/patient/createExams.service";
 
 const createExamsController = async (req: Request, res: Response) => {
-  const { name, date, results_exams }: IExamsSerilizer =
-    req.validatedBody as IExamsSerilizer;
+  const { name, date, results_exams } = req.body;
 
   const userId = req.user.id;
 
@@ -15,7 +13,10 @@ const createExamsController = async (req: Request, res: Response) => {
     userId,
   });
 
-  return res.status(201).json(newExams);
+  return res.status(201).json({
+    message: "Exame Cadastrado",
+    exam: newExams,
+  });
 };
 
 export default createExamsController;
