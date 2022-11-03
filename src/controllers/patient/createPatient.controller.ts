@@ -15,7 +15,7 @@ const createPatientController = async (req: Request, res: Response) => {
     cpf,
   });
 
-  res.status(201).json(instanceToPlain(patient));
+  return res.status(201).json(instanceToPlain(patient));
 };
 
 export default createPatientController;
