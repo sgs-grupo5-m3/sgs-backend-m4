@@ -8,7 +8,7 @@ const createMedicineController = async (req: Request, res: Response) => {
   const medicine = await createMedicineService({ name, description, patient });
 
   return res.status(201).json({
-    message: "Medicamento Cadastrado !",
+    message: "Medicine Created!",
     medicine,
   });
 };

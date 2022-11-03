@@ -5,7 +5,7 @@ import {
   IAllergySerializer,
   IDiseaseSerializer,
   IExamsSerilizer,
-  IMedicinesSerilizer,
+  IMedicinesSerializer,
   IPatientRequest,
 } from "../interfaces/patient";
 
@@ -19,7 +19,7 @@ export const patientCreateSchema: SchemaOf<IPatientRequest> = yup
     cpf: yup.string().required(),
   });
 
-export const medicinesCreateSchema: SchemaOf<IMedicinesSerilizer> = yup
+export const medicinesCreateSchema: SchemaOf<IMedicinesSerializer> = yup
   .object()
   .shape({
     name: yup.string().required(),

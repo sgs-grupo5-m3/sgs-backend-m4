@@ -19,12 +19,14 @@ const authTokenMiddleware = (
       if (error) {
         return res.status(401).json({ message: "Invalid Token." });
       }
+
+      if (decoded) {
         req.user = {
           id: decoded.sub,
-          isDoctor: decoded.isDoctor
-        }
+          isDoctor: decoded.isDoctor,
+        };
+      }
 
-      
       return next();
     }
   );

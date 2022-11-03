@@ -16,7 +16,12 @@ const createDoctorController = async (req: Request, res: Response) => {
     crm,
   });
 
-  return res.status(201).json(instanceToPlain(newDoctor));
+  delete newDoctor.password
+
+  return res.status(201).json({
+    message: "Doctor Created!",
+    doctor: newDoctor
+  });
 };
 
 export default createDoctorController;

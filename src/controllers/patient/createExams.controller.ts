@@ -14,8 +14,13 @@ const createExamsController = async (req: Request, res: Response) => {
   });
 
   return res.status(201).json({
+<<<<<<< HEAD
     message: "Exame Cadastrado",
     exam: newExams,
+=======
+    message: "Exam Created!",
+    newExams,
+>>>>>>> 3d8236aed35ed12d3c149a07e9dabefb8a067d0e
   });
 };
 

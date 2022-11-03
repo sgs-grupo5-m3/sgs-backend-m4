@@ -1,7 +1,7 @@
 import { Doctor } from "./../../entities/doctor.entity";
 import { Patient } from "./../../entities/patient.entity";
 import { AppDataSource } from "./../../data-source";
-import { ISession } from "./../../interfaces/session/session";
+import { ISession } from "../../interfaces/session";
 import { AppError } from "./../../errors/appError";
 import { compare } from "bcrypt";
 import jwt from "jsonwebtoken";
@@ -27,7 +27,7 @@ const createSessionService = async ({
   }
 
   if (doctor) {
-    const passwordMatch = await compare(password, doctor.password);
+    const passwordMatch = await compare(password, doctor.password!);
 
     if (!passwordMatch) {
       throw new AppError(403, "Invalid email or password");
@@ -48,7 +48,7 @@ const createSessionService = async ({
   }
 
   if (patient) {
-    const passwordMatch = await compare(password, patient.password);
+    const passwordMatch = await compare(password, patient.password!);
 
     if (!passwordMatch) {
       throw new AppError(403, "Invalid email or password");
