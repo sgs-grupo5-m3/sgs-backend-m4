@@ -4,8 +4,10 @@ declare global {
   namespace Express {
     interface Request {
       validatedBody: object;
-      userId: string
-      userIsDoctor: boolean
+      user: {
+        id: string;
+        isDoctor: boolean;
+      };
     }
   }
 }
