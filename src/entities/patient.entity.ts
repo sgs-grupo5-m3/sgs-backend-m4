@@ -31,15 +31,23 @@ export class Patient {
   @Column({ default: false })
   isDoctor: boolean;
 
-  @OneToMany((type) => Disease, (disease) => disease.patient)
+  @OneToMany((type) => Disease, (disease) => disease.patient, {
+    eager: true
+  })
   disease: Disease[];
 
-  @OneToMany((type) => Exam, (exam) => exam.patient)
+  @OneToMany((type) => Exam, (exam) => exam.patient, {
+    eager: true
+  })
   exam: Exam[];
 
-  @OneToMany((type) => Allergy, (allergy) => allergy.patient)
+  @OneToMany((type) => Allergy, (allergy) => allergy.patient, {
+    eager: true
+  })
   allergy: Allergy[];
 
-  @OneToMany((type) => Medicines, (medicines) => medicines.patient)
+  @OneToMany((type) => Medicines, (medicines) => medicines.patient, {
+    eager: true 
+  })
   medicines: Medicines[];
 }

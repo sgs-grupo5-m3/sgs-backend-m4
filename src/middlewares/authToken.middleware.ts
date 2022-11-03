@@ -7,21 +7,22 @@ const authTokenMiddleware = (
   next: NextFunction
 ) => {
   let token = req.headers.authorization?.split(" ")[1];
-
+console.log(token)
   if (!token) {
     return res.status(401).json({ message: "Missing authorization headers" });
   }
 
   jwt.verify(
     token as string,
-    process.env.JWT_SECRET as string,
+    process.env.SECRET_KEY as string,
     (error: any, decoded: any) => {
       if (error) {
         return res.status(401).json({ message: "Invalid Token." });
       }
-      req.user.id = decoded.sub;
-      req.user.isDoctor = decoded.isDoctor;
 
+        req.userId = decoded.sub;
+        req.userIsDoctor = decoded.isDoctor;
+      
       return next();
     }
   );

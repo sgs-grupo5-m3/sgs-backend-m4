@@ -6,7 +6,7 @@ const createExamsController = async (req: Request, res: Response) => {
   const { name, date, results_exams }: IExamsSerilizer =
     req.validatedBody as IExamsSerilizer;
 
-  const userId = req.user.id;
+  const userId = req.userId;
 
   const newExams = await createExamsService({
     name,

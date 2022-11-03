@@ -15,9 +15,7 @@ export class Exam {
     @Column({ length: 120 })
     results_exams: string
 
-    @ManyToOne((type) => Patient,{
-        eager: true
-    }) 
+    @ManyToOne((type) => Patient) 
     patient: Patient
 
 }

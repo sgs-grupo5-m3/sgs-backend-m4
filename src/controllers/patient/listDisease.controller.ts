@@ -3,7 +3,7 @@ import listDiseasesService from "../../services/patient/listDiseases.service";
 
 const listDiseasesController = async (req: Request, res: Response) => {
 
-  const id = req.user.id;
+  const id = req.userId;
   const diseases = await listDiseasesService(id);
 
   return res.json(diseases);

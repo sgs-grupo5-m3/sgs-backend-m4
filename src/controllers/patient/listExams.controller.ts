@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import listExamsService from "../../services/patient/listExams.service";
 
 const listExamsController = async (req: Request, res: Response) => {
-  const userId = req.user.id;
+  const userId = req.userId;
 
   const exams = await listExamsService(userId);
 

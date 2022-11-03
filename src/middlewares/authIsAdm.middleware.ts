@@ -5,7 +5,7 @@ const authIsAdmMiddleware = async (
   res: Response,
   next: NextFunction
 ) => {
-  if (req.user.isDoctor === false) {
+  if (req.userIsDoctor === false) {
     return res.status(403).json({ message: "Missing doctor permissions" });
   }
 

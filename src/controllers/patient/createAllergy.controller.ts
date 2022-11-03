@@ -6,7 +6,7 @@ const createAllergyController = async (req: Request, res: Response) => {
   const { name, description }: IAllergySerializer =
     req.validatedBody as IAllergySerializer;
 
-  const userId = req.user.id;
+  const userId = req.userId;
 
   const newAllergy = await createAllergyService({ name, description, userId });
 

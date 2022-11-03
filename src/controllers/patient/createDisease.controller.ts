@@ -6,7 +6,7 @@ const createDiseaseController = async (req: Request, res: Response) => {
   const { name, symptoms }: IDiseaseSerializer =
     req.validatedBody as IDiseaseSerializer;
 
-  const userId = req.user.id;
+  const userId = req.userId;
 
   const newDisease = await createDiseaseService({
     name,
