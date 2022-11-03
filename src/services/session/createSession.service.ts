@@ -1,7 +1,7 @@
 import { Doctor } from "./../../entities/doctor.entity";
 import { Patient } from "./../../entities/patient.entity";
 import { AppDataSource } from "./../../data-source";
-import { ISession } from "./../../interfaces/session/session";
+import { ISession } from "../../interfaces/session";
 import { AppError } from "./../../errors/appError";
 import { compare } from "bcrypt";
 import jwt from "jsonwebtoken";

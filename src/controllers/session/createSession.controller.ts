@@ -1,4 +1,4 @@
-import { ISession } from "./../../interfaces/session/session";
+import { ISession } from "../../interfaces/session";
 import { Request, Response } from "express";
 import createSessionService from "../../services/session/createSession.service";
 

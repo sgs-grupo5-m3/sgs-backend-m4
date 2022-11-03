@@ -34,7 +34,7 @@ export interface IMedicinesRequest {
   patient: string;
 }
 
-export interface IMedicinesSerilizer {
+export interface IMedicinesSerializer {
   name: string;
   description?: string;
 }
