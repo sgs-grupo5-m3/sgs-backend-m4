@@ -6,13 +6,13 @@ import { IMedicinesRequest } from "../../interfaces/patient";
 const createMedicineService = async ({
   name,
   description,
-  patient,
+  userId,
 }: IMedicinesRequest): Promise<Medicines> => {
   const medicinesRepository = AppDataSource.getRepository(Medicines);
   const patientRepository = AppDataSource.getRepository(Patient);
 
   const patientFind = await patientRepository.findOneBy({
-    id: patient,
+    id: userId,
   });
 
   const medicine = await medicinesRepository.save({
