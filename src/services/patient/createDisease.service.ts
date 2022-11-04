@@ -7,7 +7,7 @@ const createDiseaseService = async ({
   name,
   symptoms,
   userId,
-}: IDiseaseRequest) => {
+}: IDiseaseRequest): Promise<Disease> => {
   const diseaseRepositorey = AppDataSource.getRepository(Disease);
   const patientRepositorey = AppDataSource.getRepository(Patient);
 
