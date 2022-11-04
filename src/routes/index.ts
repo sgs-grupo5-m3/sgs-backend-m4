@@ -7,5 +7,5 @@ import sessionRouter from "./session.routes";
 export const appRoutes = (app: Express) => {
   app.use("/patient", patientRouter());
   app.use("/doctor", doctorRouter());
-  app.use("/session", sessionRouter());
+  app.use("/login", sessionRouter());
 };
