@@ -1,10 +1,11 @@
 import { Request, Response } from "express";
-import listProfileService from "../../services/patient/listProfile.service";
+import listProfileService from "../../services/profile/listProfile.service";
 
 const listProfileController = async (req: Request, res: Response) => {
-  const id = req.user.id;
+  const id: string = req.user.id;
+  const isDoctor: boolean = req.user.isDoctor
   
-  const profile = await listProfileService(id);
+  const profile = await listProfileService(id, isDoctor);
 
   delete profile?.password
 
