@@ -4,15 +4,15 @@ import updateDiseaseService from "../../services/patient/updatedDisease.service"
 
 const updateDiseaseController = async (req: Request, res: Response) => {
    
-        const updateDisease: IDiseaseRequest = req.body;
-        const id:string = req.params.id;
-        const userId: string = req.user.id
-        const disease = await updateDiseaseService( updateDisease, id, userId );
-         
-        return res.status(200).json({
-                message: "Disease Update!",
-                disease,
-              });
-}
+  const updateDisease: IDiseaseRequest = req.body;
+  const id:string = req.params.id;
+  const userId: string = req.user.id
+  const disease = await updateDiseaseService( updateDisease, id, userId );
+          
+  return res.status(200).json({
+     message: "Disease Update!",
+     disease,
+     });
+  }
 
 export default updateDiseaseController;

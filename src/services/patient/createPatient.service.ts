@@ -1,7 +1,6 @@
 import { AppDataSource } from "../../data-source";
 import { Patient } from "../../entities/patient.entity";
 import { IPatientRequest } from "../../interfaces/patient";
-
 import { hashSync } from "bcrypt";
 
 const createPatientService = async ({

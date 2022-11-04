@@ -11,21 +11,21 @@ const updateMedicineService = async (
   const medicineRepository = AppDataSource.getRepository(Medicines);
 
   const findMedicine = await medicineRepository.findOne({
-    where: {
-      id: id,
-    },
-    relations: {
-      patient: true,
-    },
-  });
+      where: {
+          id: id
+      },
+      relations: {
+          patient: true
+      }
+  })
+   
+    if(!findMedicine){
+        throw new AppError(403,"Id not found")
+    }
 
-  if (!findMedicine) {
-    throw new AppError(400, "Id not found");
-  }
-
-  if (findMedicine.patient.id !== userId) {
-    throw new AppError(400, "Cannot change another patient's medicine");
-  }
+    if(findMedicine.patient!.id !== userId){
+        throw new AppError(403, "Cannot change another patient's medicine")
+    }
 
   await medicineRepository.update(id, {
     name: name ? name : findMedicine.name,

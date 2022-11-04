@@ -4,15 +4,15 @@ import updateExamService from "../../services/patient/updatedExam.service";
 
 const updateExamController = async (req: Request, res: Response) => {
    
-        const updateExam: IExamsRequest = req.body;
-        const id:string = req.params.id;
-        const userId: string = req.user.id
-        const exam = await updateExamService( updateExam, id, userId );
-         
-        return res.status(200).json({
-                message: "Exam Update!",
-                exam,
-              });
-}
+  const updateExam: IExamsRequest = req.body;
+  const id:string = req.params.id;
+  const userId: string = req.user.id
+  const exam = await updateExamService( updateExam, id, userId );
+          
+  return res.status(200).json({
+        message: "Exam Update!",
+        exam,
+        });
+  }
 
 export default updateExamController;
