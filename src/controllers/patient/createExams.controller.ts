@@ -16,7 +16,7 @@ const createExamsController = async (req: Request, res: Response) => {
   delete exam.patient;
 
   return res.status(201).json({
-    message: "Exam Created",
+    message: "Exam Created!",
     exam,
   });
 };
