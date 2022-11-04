@@ -16,10 +16,6 @@ const createMedicineService = async ({
     id: patient,
   });
 
-  if (!patientFind) {
-    throw new AppError(400, "id de usuario não encontrado");
-  }
-
   const medicine = await medicinesRepository.save({
     name,
     description,
