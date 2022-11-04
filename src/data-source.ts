@@ -11,7 +11,7 @@ export const AppDataSource =
       })
     : new DataSource({
         type: "postgres",
-        url: process.env.DATABASE_URL,
+        url: process.env.HEROKU_POSTGRESQL_CRIMSON_URL,
         ssl:
           process.env.NODE_ENV === "production"
             ? { rejectUnauthorized: false }
