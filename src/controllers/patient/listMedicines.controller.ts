@@ -6,7 +6,7 @@ const listMedicinesController = async (req: Request, res: Response) => {
 
   const medicines = await listMedicineService(id);
 
-  return res.status(200).json(medicines);
+  return res.status(200).json({ medicines });
 };
 
 export default listMedicinesController;

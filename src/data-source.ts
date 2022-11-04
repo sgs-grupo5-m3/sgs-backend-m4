@@ -6,7 +6,7 @@ export const AppDataSource =
     ? new DataSource({
         type: "sqlite",
         database: ":memory:",
-        entities: ["src/entities/**/*.ts"],
+        entities: ["src/entities/*.ts"],
         synchronize: true,
       })
     : new DataSource({
@@ -27,11 +27,3 @@ export const AppDataSource =
             ? ["dist/migrations/*.js"]
             : ["src/migrations/*.ts"],
       });
-
-AppDataSource.initialize()
-  .then(() => {
-    console.log("Data Source initialized");
-  })
-  .catch((err) => {
-    console.error("Error during Data Source initialization", err);
-  });
