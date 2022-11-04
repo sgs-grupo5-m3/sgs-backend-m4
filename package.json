@@ -10,7 +10,7 @@
     "typeorm": "typeorm-ts-node-commonjs",
     "test": "NODE_ENV=test jest",
     "build": "tsc",
-    "start": "node dist/app.js"
+    "start": "node dist/src/server.js"
   },
   "dependencies": {
     "@types/yup": "^0.32.0",
