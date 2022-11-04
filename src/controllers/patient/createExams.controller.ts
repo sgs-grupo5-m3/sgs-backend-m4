@@ -8,16 +8,18 @@ const createExamsController = async (req: Request, res: Response) => {
 
   const userId = req.user.id;
 
-  const newExams = await createExamsService({
+  const exams = await createExamsService({
     name,
     date,
     results_exams,
     userId,
   });
 
+  delete exams.patient
+
   return res.status(201).json({
     message: "Exam Created!",
-    newExams,
+    exams,
   });
 };
 

@@ -20,11 +20,11 @@ const updateMedicineService = async({
     })
    
     if(!findMedicine){
-        throw new AppError(400,"Id not found")
+        throw new AppError(403,"Id not found")
     }
 
-    if(findMedicine.patient.id !== userId){
-        throw new AppError(400, "Cannot change another patient's medicine")
+    if(findMedicine.patient!.id !== userId){
+        throw new AppError(403, "Cannot change another patient's medicine")
     }
 
     await medicineRepository.update(

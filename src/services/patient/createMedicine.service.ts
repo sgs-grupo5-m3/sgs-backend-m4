@@ -1,7 +1,6 @@
 import { AppDataSource } from "../../data-source";
 import { Medicines } from "../../entities/medicines.entity";
 import { Patient } from "../../entities/patient.entity";
-import { AppError } from "../../errors/appError";
 import { IMedicinesRequest } from "../../interfaces/patient";
 
 const createMedicineService = async ({
@@ -15,10 +14,6 @@ const createMedicineService = async ({
   const patientFind = await patientRepository.findOneBy({
     id: patient,
   });
-
-  if (!patientFind) {
-    throw new AppError(400, "id de usuario não encontrado");
-  }
 
   const medicine = await medicinesRepository.save({
     name,

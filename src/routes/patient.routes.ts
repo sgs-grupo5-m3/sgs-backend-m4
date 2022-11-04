@@ -28,6 +28,7 @@ import updateAllergyController from "../controllers/patient/updatedAllergy.contr
 import updateDiseaseController from "../controllers/patient/updatedDisease.controller";
 import updateExamController from "../controllers/patient/updatedExam.controller";
 import updateMedicineController from "../controllers/patient/updatedMedicine.controller";
+import listProfileController from "../controllers/patient/listProfile.controller";
 
 
 const router = Router();
@@ -39,6 +40,8 @@ const patientRouter = () => {
     createUserMiddleware,
     createPatientController
   );
+
+  router.get("", authTokenMiddleware, listProfileController)
 
   router.post(
     "/exam",

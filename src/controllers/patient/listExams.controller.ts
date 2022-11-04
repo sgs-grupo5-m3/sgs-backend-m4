@@ -6,7 +6,7 @@ const listExamsController = async (req: Request, res: Response) => {
 
   const exams = await listExamsService(userId);
 
-  return res.status(200).json({ exams });
+  return res.status(200).json(exams);
 };
 
 export default listExamsController;
