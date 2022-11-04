@@ -24,16 +24,16 @@ describe("/users", () => {
   test("POST /doctor - Deve ser capaz de criar um doutor", async () => {
     const response = await request(app).post("/doctor").send(mockedDoctor);
 
-    expect(response.body).toHaveProperty("id");
-    expect(response.body).toHaveProperty("name");
-    expect(response.body).toHaveProperty("email");
-    expect(response.body).toHaveProperty("birth_date");
-    expect(response.body).toHaveProperty("cpf");
-    expect(response.body).toHaveProperty("crm");
-    expect(response.body).toHaveProperty("password");
-    expect(response.body.name).toEqual("Felipe");
-    expect(response.body.email).toEqual("felipe@gmail.com");
-    expect(response.body.isDoctor).toEqual(true);
+    expect(response.body.doctor).toHaveProperty("id");
+    expect(response.body.doctor).toHaveProperty("name");
+    expect(response.body.doctor).toHaveProperty("email");
+    expect(response.body.doctor).toHaveProperty("birth_date");
+    expect(response.body.doctor).toHaveProperty("cpf");
+    expect(response.body.doctor).toHaveProperty("crm");
+    expect(response.body.doctor).not.toHaveProperty("password");
+    expect(response.body.doctor.name).toEqual("Felipe");
+    expect(response.body.doctor.email).toEqual("felipe@gmail.com");
+    expect(response.body.doctor.isDoctor).toEqual(true);
     expect(response.status).toBe(201);
   });
 
@@ -47,15 +47,15 @@ describe("/users", () => {
   test("POST /patient - Deve ser capaz de criar um paciente", async () => {
     const response = await request(app).post("/patient").send(mockedPatient);
 
-    expect(response.body).toHaveProperty("id");
-    expect(response.body).toHaveProperty("name");
-    expect(response.body).toHaveProperty("email");
-    expect(response.body).toHaveProperty("birth_date");
-    expect(response.body).toHaveProperty("cpf");
-    expect(response.body).toHaveProperty("password");
-    expect(response.body.name).toEqual("Daniel");
-    expect(response.body.email).toEqual("daniel@gmail.com");
-    expect(response.body.isDoctor).toEqual(false);
+    expect(response.body.patient).toHaveProperty("id");
+    expect(response.body.patient).toHaveProperty("name");
+    expect(response.body.patient).toHaveProperty("email");
+    expect(response.body.patient).toHaveProperty("birth_date");
+    expect(response.body.patient).toHaveProperty("cpf");
+    expect(response.body.patient).not.toHaveProperty("password");
+    expect(response.body.patient.name).toEqual("Daniel");
+    expect(response.body.patient.email).toEqual("daniel@gmail.com");
+    expect(response.body.patient.isDoctor).toEqual(false);
     expect(response.status).toBe(201);
   });
 
