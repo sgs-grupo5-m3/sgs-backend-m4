@@ -20,11 +20,11 @@ const updateDiseaseService = async({
     })
    
     if(!findDisease){
-        throw new AppError(400,"Id not found")
+        throw new AppError(403,"Id not found")
     }
 
-    if(findDisease.patient.id !== userId){
-        throw new AppError(400, "Cannot change another patient's disease")
+    if(findDisease.patient!.id !== userId){
+        throw new AppError(403, "Cannot change another patient's disease")
     }
 
     await diseaseRepository.update(

@@ -2,7 +2,7 @@ import { AppDataSource } from '../../data-source'
 import { IAllergyRequest } from '../../interfaces/patient'
 import { Allergy } from "../../entities/allergy.entiry"
 import { AppError } from '../../errors/appError'
-import { threadId } from 'worker_threads'
+
 const updateAllergyService = async({ 
     name, 
     description }: IAllergyRequest, id: string, userId: string)
@@ -20,11 +20,11 @@ const updateAllergyService = async({
     })
    
     if(!findAllergy){
-        throw new AppError(400,"Id not found")
+        throw new AppError(403,"Id not found")
     }
    
-    if(findAllergy.patient.id !== userId){
-        throw new AppError(400, "Cannot change another patient's allergy")
+    if(findAllergy.patient!.id !== userId){
+        throw new AppError(403, "Cannot change another patient's allergy")
     }
 
     await allergyRepository.update(

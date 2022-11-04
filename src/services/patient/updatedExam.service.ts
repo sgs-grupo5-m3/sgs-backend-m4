@@ -20,11 +20,11 @@ const updateExamService = async({
     })
    
     if(!findExam){
-        throw new AppError(400,"Id not found")
+        throw new AppError(403,"Id not found")
     }
 
-    if(findExam.patient.id !== userId){
-        throw new AppError(400, "Cannot change another patient's exam")
+    if(findExam.patient!.id !== userId){
+        throw new AppError(403, "Cannot change another patient's exam")
     }
 
     await examRepository.update(

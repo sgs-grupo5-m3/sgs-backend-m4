@@ -16,5 +16,5 @@ export class Exam {
   results_exams: string;
 
   @ManyToOne((type) => Patient)
-  patient: Patient;
+  patient?: Patient;
 }

@@ -13,5 +13,5 @@ export class Allergy {
   description?: string;
 
   @ManyToOne((type) => Patient)
-  patient: Patient;
+  patient?: Patient;
 }
