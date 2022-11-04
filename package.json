@@ -5,9 +5,6 @@
   "repository": "git@github.com:sgs-grupo5-m3/sgs-backend-m4.git",
   "author": "Gutemberg Lamark <gtmbrglamark@gmail.com>",
   "license": "MIT",
-  "engines": {
-    "node": "16.x"
-  },
   "scripts": {
     "dev": "ts-node-dev src/server.ts",
     "typeorm": "typeorm-ts-node-commonjs",
