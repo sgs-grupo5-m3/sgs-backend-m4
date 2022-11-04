@@ -11,6 +11,7 @@ import {
 import authTokenMiddleware from "../middlewares/authToken.middleware";
 import validateRequest from "../middlewares/validateRequest.middleware";
 import createUserMiddleware from "../middlewares/createUser.middleware";
+import authIsPatientMiddleware from "../middlewares/authIsPatient.middleware";
 
 
 import createPatientController from "../controllers/patient/createPatient.controller";
@@ -28,7 +29,6 @@ import updateAllergyController from "../controllers/patient/updatedAllergy.contr
 import updateDiseaseController from "../controllers/patient/updatedDisease.controller";
 import updateExamController from "../controllers/patient/updatedExam.controller";
 import updateMedicineController from "../controllers/patient/updatedMedicine.controller";
-import listProfileController from "../controllers/patient/listProfile.controller";
 
 
 const router = Router();
@@ -41,51 +41,53 @@ const patientRouter = () => {
     createPatientController
   );
 
-  router.get("", authTokenMiddleware, listProfileController)
-
   router.post(
     "/exam",
     authTokenMiddleware,
+    authIsPatientMiddleware,
     validateRequest(examsCreateSchema),
     createExamsController
   );
 
-  router.get("/exam", authTokenMiddleware, listExamsController);
+  router.get("/exam", authTokenMiddleware, authIsPatientMiddleware, listExamsController);
 
-  router.patch("/exam/:id", authTokenMiddleware, updateExamController)
+  router.patch("/exam/:id", authTokenMiddleware, authIsPatientMiddleware, updateExamController)
 
   router.post(
     "/medicine",
     authTokenMiddleware,
+    authIsPatientMiddleware,
     validateRequest(medicinesCreateSchema),
     createMedicineController
   );
 
-  router.get("/medicine", authTokenMiddleware, listMedicinesController);
+  router.get("/medicine", authTokenMiddleware, authIsPatientMiddleware, listMedicinesController);
 
-  router.patch("/medicine/:id", authTokenMiddleware, updateMedicineController)
+  router.patch("/medicine/:id", authTokenMiddleware, authIsPatientMiddleware, updateMedicineController)
 
   router.post(
     "/allergy",
     authTokenMiddleware,
+    authIsPatientMiddleware,
     validateRequest(allergiesCreateSchema),
     createAllergyController
   );
 
-  router.get("/allergy", authTokenMiddleware, listAllergyController);
+  router.get("/allergy", authTokenMiddleware, authIsPatientMiddleware, listAllergyController);
 
-  router.patch("/allergy/:id", authTokenMiddleware, updateAllergyController)
+  router.patch("/allergy/:id", authTokenMiddleware, authIsPatientMiddleware, updateAllergyController)
 
   router.post(
     "/disease",
     authTokenMiddleware,
+    authIsPatientMiddleware,
     validateRequest(diseasesCreateSchema),
     createDiseaseController
   );
 
-  router.get("/disease", authTokenMiddleware, listDiseasesController);
+  router.get("/disease", authTokenMiddleware, authIsPatientMiddleware, listDiseasesController);
 
-  router.patch("/disease/:id", authTokenMiddleware, updateDiseaseController)
+  router.patch("/disease/:id", authTokenMiddleware, authIsPatientMiddleware, updateDiseaseController)
 
   return router;
 };
