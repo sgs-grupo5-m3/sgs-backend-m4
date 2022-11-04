@@ -9,8 +9,5 @@ export const appRoutes = (app: Express) => {
   app.use("/patient", patientRouter());
   app.use("/doctor", doctorRouter());
   app.use("/login", sessionRouter());
-<<<<<<< HEAD
   app.use("/profile", profileRouter())
-=======
->>>>>>> a9f2532838de38fafa1300c53051f5cb9287bf5d
 };
