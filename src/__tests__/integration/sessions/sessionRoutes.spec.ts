@@ -43,7 +43,7 @@ describe("/login", () => {
     expect(response.status).toBe(200);
   });
 
-  test("POST /login -  Não deve ser possivel fdazer login com usuário ou senhas incorretas", async () => {
+  test("POST /login -  Não deve ser possivel fazer login com usuário ou senhas incorretas", async () => {
     const response = await request(app).post("/login").send({
       email: "felipe@gmail.com",
       password: "1234567",
@@ -53,7 +53,7 @@ describe("/login", () => {
     expect(response.status).toBe(403);
   });
 
-  test("POST /login -  Não deve ser possivel fdazer login com usuário ou senhas incorretas", async () => {
+  test("POST /login -  Não deve ser possivel fazer login com usuário ou senhas incorretas", async () => {
     const response = await request(app).post("/login").send({
       email: "felipe@mail.com",
       password: "12345",
