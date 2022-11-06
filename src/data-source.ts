@@ -1,15 +1,15 @@
 import { DataSource } from "typeorm";
 import "dotenv/config";
 
-export const AppDataSource =
+export const AppDataSource = new DataSource(
   process.env.NODE_ENV === "test"
-    ? new DataSource({
+    ? {
         type: "sqlite",
         database: ":memory:",
         entities: ["src/entities/*.ts"],
         synchronize: true,
-      })
-    : new DataSource({
+      }
+    : {
         type: "postgres",
         url: process.env.HEROKU_POSTGRESQL_CRIMSON_URL,
         ssl:
@@ -26,4 +26,5 @@ export const AppDataSource =
           process.env.NODE_ENV === "production"
             ? ["dist/src/migrations/*.js"]
             : ["src/migrations/*.ts"],
-      });
+      }
+);
