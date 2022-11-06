@@ -2,9 +2,9 @@ import request from "supertest";
 import { DataSource } from "typeorm";
 import app from "../../../app";
 import { AppDataSource } from "../../../data-source";
-import { mockedDoctor, mockedPatient } from "../../mocks";
+import { mockedDoctor, mockedPatient, mockedPatientLogin } from "../../mocks";
 
-describe("/users", () => {
+describe("Rotas /users", () => {
   let connection: DataSource;
 
   beforeAll(async () => {
@@ -64,5 +64,22 @@ describe("/users", () => {
 
     expect(response.body).toHaveProperty("message");
     expect(response.status).toBe(409);
+  });
+
+  test("POST /profile - Deve retornar os dados do usuário logado", async () => {
+    await request(app).post("/patient").send(mockedPatient);
+    const patientLoginResponse = await request(app)
+      .post("/login")
+      .send(mockedPatientLogin);
+
+    const response = await request(app)
+      .get("/profile")
+      .set("Authorization", `Bearer ${patientLoginResponse.body.token}`);
+
+    expect(response.body).toHaveProperty("profile");
+    expect(response.body.profile.name).toEqual("Daniel");
+    expect(response.body.profile.email).toEqual("daniel@gmail.com");
+    expect(response.body.profile).not.toHaveProperty("password");
+    expect(response.status).toBe(200);
   });
 });
