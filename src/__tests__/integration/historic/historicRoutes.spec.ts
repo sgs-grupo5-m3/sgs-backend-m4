@@ -14,7 +14,7 @@ import {
   mockedPatientLogin,
 } from "../../mocks";
 
-describe("/historic", () => {
+describe("Rotas /patient/historic", () => {
   let connection: DataSource;
 
   beforeAll(async () => {
@@ -129,6 +129,30 @@ describe("/historic", () => {
     expect(response.status).toBe(401);
   });
 
+  test("PATCH /patient/allergy/:id -  Deve ser possível atualizar alergia", async () => {
+    const newValues = { name: "Pelo de gato", description: "Fico espirrando" };
+
+    const patientLoginResponse = await request(app)
+      .post("/login")
+      .send(mockedPatientLogin);
+    const token = `Bearer ${patientLoginResponse.body.token}`;
+
+    const allergyTobeUpdateRequest = await request(app)
+      .get("/patient/allergy")
+      .set("Authorization", token);
+    const allergyTobeUpdateId = allergyTobeUpdateRequest.body.allergys[0].id;
+
+    const response = await request(app)
+      .patch(`/patient/allergy/${allergyTobeUpdateId}`)
+      .set("Authorization", token)
+      .send(newValues);
+
+    expect(response.body.allergy.name).toEqual("Pelo de gato");
+    expect(response.body.allergy.description).toEqual("Fico espirrando");
+    expect(response.body.allergy).not.toHaveProperty("patient");
+    expect(response.status).toBe(200);
+  });
+
   test("POST /patient/disease - Deve ser capaz de criar doença", async () => {
     await request(app).post("/patient").send(mockedPatient);
     const patientLoginResponse = await request(app)
@@ -227,6 +251,30 @@ describe("/historic", () => {
     expect(response.status).toBe(401);
   });
 
+  test("PATCH /patient/disease/:id -  Deve ser possível atualizar doença", async () => {
+    const newValues = { name: "Varíola", symptoms: "Manchas avermelhadas" };
+
+    const patientLoginResponse = await request(app)
+      .post("/login")
+      .send(mockedPatientLogin);
+    const token = `Bearer ${patientLoginResponse.body.token}`;
+
+    const diseaseTobeUpdateRequest = await request(app)
+      .get("/patient/disease")
+      .set("Authorization", token);
+    const diseaseTobeUpdateId = diseaseTobeUpdateRequest.body.diseases[0].id;
+
+    const response = await request(app)
+      .patch(`/patient/disease/${diseaseTobeUpdateId}`)
+      .set("Authorization", token)
+      .send(newValues);
+
+    expect(response.body.disease.name).toEqual("Varíola");
+    expect(response.body.disease.symptoms).toEqual("Manchas avermelhadas");
+    expect(response.body.disease).not.toHaveProperty("patient");
+    expect(response.status).toBe(200);
+  });
+
   test("POST /patient/exam - Deve ser capaz de criar Exame", async () => {
     await request(app).post("/patient").send(mockedPatient);
     const patientLoginResponse = await request(app)
@@ -294,6 +342,35 @@ describe("/historic", () => {
 
     expect(response.body).toHaveProperty("message");
     expect(response.status).toBe(401);
+  });
+
+  test("PATCH /patient/exam/:id -  Deve ser possível atualizar exame", async () => {
+    const newValues = {
+      name: "Exame de DNA",
+      date: "2020/07/25",
+      results_exams: "https://examededna",
+    };
+
+    const patientLoginResponse = await request(app)
+      .post("/login")
+      .send(mockedPatientLogin);
+    const token = `Bearer ${patientLoginResponse.body.token}`;
+
+    const examTobeUpdateRequest = await request(app)
+      .get("/patient/exam")
+      .set("Authorization", token);
+    const examTobeUpdateId = examTobeUpdateRequest.body.exams[0].id;
+
+    const response = await request(app)
+      .patch(`/patient/exam/${examTobeUpdateId}`)
+      .set("Authorization", token)
+      .send(newValues);
+
+    expect(response.body.exam.name).toEqual("Exame de DNA");
+    expect(response.body.exam.date).toEqual("2020/07/25");
+    expect(response.body.exam.results_exams).toEqual("https://examededna");
+    expect(response.body.exam).not.toHaveProperty("patient");
+    expect(response.status).toBe(200);
   });
 
   test("POST /patient/medicine - Deve ser capaz de criar um Remédio", async () => {
@@ -392,5 +469,32 @@ describe("/historic", () => {
 
     expect(response.body).toHaveProperty("message");
     expect(response.status).toBe(401);
+  });
+
+  test("PATCH /patient/medicine/:id -  Deve ser possível atualizar o remédio", async () => {
+    const newValues = {
+      name: "Xarope",
+      description: "Para tosse ou gripe",
+    };
+
+    const patientLoginResponse = await request(app)
+      .post("/login")
+      .send(mockedPatientLogin);
+    const token = `Bearer ${patientLoginResponse.body.token}`;
+
+    const medicineTobeUpdateRequest = await request(app)
+      .get("/patient/medicine")
+      .set("Authorization", token);
+    const medicineTobeUpdateId = medicineTobeUpdateRequest.body.medicines[0].id;
+
+    const response = await request(app)
+      .patch(`/patient/medicine/${medicineTobeUpdateId}`)
+      .set("Authorization", token)
+      .send(newValues);
+
+    expect(response.body.medicine.name).toEqual("Xarope");
+    expect(response.body.medicine.description).toEqual("Para tosse ou gripe");
+    expect(response.body.medicine).not.toHaveProperty("patient");
+    expect(response.status).toBe(200);
   });
 });
