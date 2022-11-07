@@ -1,6 +1,6 @@
 import { AppDataSource } from '../../data-source'
 import { IAllergyRequest } from '../../interfaces/patient'
-import { Allergy } from "../../entities/allergy.entiry"
+import { Allergy } from "../../entities/allergy.entity"
 import { AppError } from '../../errors/appError'
 const updateAllergyService = async({ 
     name, 

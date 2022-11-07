@@ -1,5 +1,6 @@
 import { Exclude } from "class-transformer";
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
+import { Specialties } from "./specialties.entity";
 
 @Entity("doctor")
 export class Doctor {
@@ -27,4 +28,9 @@ export class Doctor {
 
   @Column({ unique: true, length: 20 })
   crm: string;
+
+  @OneToMany((type) => Specialties, (specialties) => specialties.doctor, {
+    eager: true
+  })
+  specialties: Specialties
 }

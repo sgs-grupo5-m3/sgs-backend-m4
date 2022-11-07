@@ -1,5 +1,5 @@
 import { AppDataSource } from "../../data-source";
-import { Allergy } from "../../entities/allergy.entiry";
+import { Allergy } from "../../entities/allergy.entity";
 import { IAllergyRequest } from "../../interfaces/patient";
 import { Patient } from "../../entities/patient.entity";
 import { AppError } from "../../errors/appError";
