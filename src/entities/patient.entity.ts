@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
 
-import { Allergy } from "./allergy.entiry";
+import { Allergy } from "./allergy.entity";
 import { Disease } from "./disease.entity";
 import { Exam } from "./exam.entity";
 import { Medicines } from "./medicines.entity";

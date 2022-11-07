@@ -1,5 +1,5 @@
 import { AppDataSource } from "../../data-source";
-import { Allergy } from "../../entities/allergy.entiry";
+import { Allergy } from "../../entities/allergy.entity";
 import { Patient } from "../../entities/patient.entity";
 
 const listAllergyService = async (id: string) => {
