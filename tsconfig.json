@@ -35,12 +35,7 @@
       "./src/@types",
       "./node_modules/@types"
     ] /* Specify multiple folders that act like './node_modules/@types'. */,
-<<<<<<< HEAD
-   // "types": [   "yup",  "express"]
-    /* Specify type package names to be included without being referenced in a source file. */,
-=======
     // "types": [] /* Specify type package names to be included without being referenced in a source file. */,
->>>>>>> eda238804528b433ed30a8cbf7ddb53904564637
     // "allowUmdGlobalAccess": true,                     /* Allow accessing UMD globals from modules. */
     // "moduleSuffixes": [],                             /* List of file name suffixes to search when resolving a module. */
     // "resolveJsonModule": true,                        /* Enable importing .json files. */
