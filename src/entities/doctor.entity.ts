@@ -1,5 +1,5 @@
 import { Exclude } from "class-transformer";
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, OneToOne, JoinColumn } from "typeorm";
 import { Specialties } from "./specialties.entity";
 
 @Entity("doctor")
@@ -17,8 +17,8 @@ export class Doctor {
   email: string;
 
   @Column({ length: 120 })
-  @Exclude()
-  password: string;
+  @Exclude({ toPlainOnly: true })
+  password?: string;
 
   @Column({ unique: true, length: 20 })
   cpf: string;
@@ -29,8 +29,9 @@ export class Doctor {
   @Column({ unique: true, length: 20 })
   crm: string;
 
-  @OneToMany((type) => Specialties, (specialties) => specialties.doctor, {
+  @OneToOne((type) => Specialties, {
     eager: true
   })
+  @JoinColumn()
   specialties: Specialties
 }

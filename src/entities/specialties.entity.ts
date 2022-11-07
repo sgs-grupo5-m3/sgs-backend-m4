@@ -1,5 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
-import { Doctor } from "./doctor.entity";
+import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity('specialties')
 export class Specialties {
@@ -8,7 +7,4 @@ export class Specialties {
 
     @Column({ length: 120 })
     name: string
-
-    @ManyToOne((type) => Doctor)
-    doctor: Doctor[]
 }

@@ -8,11 +8,13 @@ const createAllergyController = async (req: Request, res: Response) => {
 
   const userId = req.user.id;
 
-  const newAllergy = await createAllergyService({ name, description, userId });
+  const allergy = await createAllergyService({ name, description, userId });
+
+  delete allergy.patient
 
   return res.status(201).json({
-    message: "Alergia Cadastrada!",
-    newAllergy,
+    message: "Allergy Created!",
+    allergy,
   });
 };
 

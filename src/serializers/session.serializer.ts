@@ -1,7 +1,7 @@
 import * as yup from "yup";
 
 import { SchemaOf } from "yup";
-import { ISession } from "../interfaces/session/session";
+import { ISession } from "../interfaces/session";
 
 export const sessionCreateSchema: SchemaOf<ISession> = yup.object().shape({
   email: yup.string().email().required(),

@@ -1,6 +1,6 @@
-import { Request, Response, NextFunction } from "express";
+import { Response, NextFunction, Request } from "express";
 
-const authIsAdmMiddleware = async (
+const authIsDoctorMiddleware = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -12,4 +12,4 @@ const authIsAdmMiddleware = async (
   return next();
 };
 
-export default authIsAdmMiddleware;
+export default authIsDoctorMiddleware;

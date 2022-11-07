@@ -6,7 +6,9 @@ const listPatientDoctorController = async (req: Request, res: Response) => {
 
   const patient = await listPatientDoctorService(cpf);
 
-  return res.json(patient);
+  delete patient.password;
+
+  return res.status(200).json({ patient });
 };
 
 export default listPatientDoctorController;
