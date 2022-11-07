@@ -15,11 +15,11 @@ const createDoctorController = async (req: Request, res: Response) => {
     crm,
   });
 
-  delete doctor.password
+  delete doctor.password;
 
   return res.status(201).json({
-    message: "Doctor Created!",
-    doctor
+    message: "Doctor Created!!",
+    doctor,
   });
 };
 
