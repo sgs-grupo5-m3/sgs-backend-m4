@@ -10,4 +10,5 @@ export const doctorCreateSchema: SchemaOf<IDoctorRequest> = yup.object().shape({
   password: yup.string().required(),
   cpf: yup.string().required(),
   crm: yup.string().required(),
+  specialtie: yup.string().required()
 });
