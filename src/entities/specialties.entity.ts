@@ -1,10 +1,20 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  OneToMany,
+  ManyToOne,
+} from "typeorm";
+import { Doctor } from "./doctor.entity";
 
-@Entity('specialties')
+@Entity("specialties")
 export class Specialties {
-    @PrimaryGeneratedColumn("uuid")
-    id: string
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
-    @Column({ length: 120 })
-    name: string
+  @Column({ length: 120 })
+  name: string;
+
+  @ManyToOne((type) => Doctor)
+  doctor: Doctor[];
 }

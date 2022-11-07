@@ -1,5 +1,14 @@
 import { Exclude } from "class-transformer";
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany, OneToOne, JoinColumn } from "typeorm";
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  OneToMany,
+  OneToOne,
+  JoinColumn,
+  ManyToMany,
+  ManyToOne,
+} from "typeorm";
 import { Specialties } from "./specialties.entity";
 
 @Entity("doctor")
@@ -29,9 +38,8 @@ export class Doctor {
   @Column({ unique: true, length: 20 })
   crm: string;
 
-  @OneToOne((type) => Specialties, {
-    eager: true
+  @OneToMany((type) => Specialties, (specialties) => specialties.doctor, {
+    eager: true,
   })
-  @JoinColumn()
-  specialties: Specialties
+  specialties: Specialties;
 }
