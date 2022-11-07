@@ -14,7 +14,7 @@ const createDiseaseController = async (req: Request, res: Response) => {
     userId,
   });
 
-  //  delete disease.patient
+   delete disease.patient
 
   return res.status(201).json({
     message: "Disease Created!",
