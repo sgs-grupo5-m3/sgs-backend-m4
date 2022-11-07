@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { AppDataSource } from "../data-source";
+import { Specialties } from "../entities/specialties.entity";
 import { AppError } from "../errors/appError";
 
 const createSpecialtiesMiddleware = async (

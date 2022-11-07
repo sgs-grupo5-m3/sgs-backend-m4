@@ -1,4 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  OneToMany,
+  ManyToOne,
+} from "typeorm";
 import { Doctor } from "./doctor.entity";
 
 @Entity("specialties")
@@ -9,8 +15,6 @@ export class Specialties {
   @Column({ length: 120 })
   name: string;
 
-  @OneToMany((type) => Doctor, (doctor) => doctor.specialties, {
-    eager: true,
-  })
+  @ManyToOne((type) => Doctor)
   doctor: Doctor[];
 }

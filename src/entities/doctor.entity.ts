@@ -38,7 +38,7 @@ export class Doctor {
   @Column({ unique: true, length: 20 })
   crm: string;
 
-  @ManyToOne((type) => Specialties, {
+  @OneToMany((type) => Specialties, (specialties) => specialties.doctor, {
     eager: true,
   })
   specialties: Specialties;
