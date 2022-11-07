@@ -4,5 +4,6 @@ export interface IDoctorRequest{
     email: string, 
     password?: string, 
     cpf: string, 
-    crm: string
+    crm: string,
+    specialtie: string
 }
