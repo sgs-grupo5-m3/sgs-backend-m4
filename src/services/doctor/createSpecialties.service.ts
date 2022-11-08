@@ -2,6 +2,7 @@ import { AppDataSource } from "../../data-source";
 import { Doctor } from "../../entities/doctor.entity";
 import { hashSync } from "bcrypt";
 import { ISpecialtyRequest } from "../../interfaces/doctor";
+import { Specialties } from "../../entities/specialties.entity";
 
 const createSpecialtiesService = async ({
   name,
