@@ -15,6 +15,8 @@ export class Specialties {
   @Column({ length: 120 })
   name: string;
 
-  @ManyToOne((type) => Doctor)
+  @OneToMany((type) => Doctor, (doctor) => doctor.specialties, {
+    eager: true,
+  })
   doctor: Doctor[];
 }
