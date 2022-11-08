@@ -30,15 +30,11 @@ const doctorRouter = () => {
   );
   router.post(
     "/specialties",
-    authTokenMiddleware,
-    authIsDoctorMiddleware,
     createSpecialtiesMiddleware,
     createSpecialtiesController
   );
   router.get(
     "/specialties",
-    authTokenMiddleware,
-    authIsDoctorMiddleware,
     listSpecialtiesController
   );
 

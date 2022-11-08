@@ -10,7 +10,7 @@ import "dotenv/config";
 const createSessionService = async ({
   email,
   password,
-}: ISession): Promise<string | undefined> => {
+}: ISession): Promise<object | undefined> => {
   const doctorRepository = AppDataSource.getRepository(Doctor);
   const patientRepository = AppDataSource.getRepository(Patient);
 
@@ -43,8 +43,11 @@ const createSessionService = async ({
         subject: doctor.id,
       }
     );
-
-    return token;
+      
+    return {
+        token,
+        isDoctor: doctor.isDoctor
+    };
   }
 
   if (patient) {
@@ -65,7 +68,10 @@ const createSessionService = async ({
       }
     );
 
-    return token;
+    return {
+      token,
+      isDoctor: patient.isDoctor
+  };
   }
 };
 
