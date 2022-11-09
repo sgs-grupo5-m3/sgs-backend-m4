@@ -11,6 +11,10 @@ const createAllergyService = async ({
   const allergyRepository = AppDataSource.getRepository(Allergy);
   const patientRepositorey = AppDataSource.getRepository(Patient);
 
+  if(description === ""){
+    description = undefined
+  }
+
   const patientFind = await patientRepositorey.findOneBy({ id: userId });
 
   const allergy = await allergyRepository.save({
