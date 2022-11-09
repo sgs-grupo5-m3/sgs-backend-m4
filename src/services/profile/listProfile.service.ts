@@ -10,7 +10,9 @@ const listProfileService = async (id: string, isDoctor: boolean) => {
     const doctorFind = await doctorRepository.findOne({
       where: {
         id,
-      },
+      }, relations: {
+        specialties: true
+      }
     });
 
     return doctorFind;
