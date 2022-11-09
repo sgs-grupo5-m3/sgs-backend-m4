@@ -12,6 +12,7 @@ import { doctorCreateSchema } from "../serializers";
 import createSpecialtiesMiddleware from "../middlewares/createSpecialties.middleware";
 import createSpecialtiesController from "../controllers/doctor/createSpecialties.controller";
 import listSpecialtiesController from "../controllers/doctor/listSpecialties.controller";
+import { specialtiesCreateSchema } from "../serializers/doctor.serializer";
 
 const router = Router();
 
@@ -30,6 +31,7 @@ const doctorRouter = () => {
   );
   router.post(
     "/specialties",
+    validateRequest(specialtiesCreateSchema),
     createSpecialtiesMiddleware,
     createSpecialtiesController
   );

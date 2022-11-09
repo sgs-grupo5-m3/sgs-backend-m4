@@ -1,7 +1,7 @@
 import * as yup from "yup";
 
 import { SchemaOf } from "yup";
-import { IDoctorRequest } from "../interfaces/doctor";
+import { IDoctorRequest, ISpecialtyRequest } from "../interfaces/doctor";
 
 export const doctorCreateSchema: SchemaOf<IDoctorRequest> = yup.object().shape({
   name: yup.string().required(),
@@ -12,3 +12,7 @@ export const doctorCreateSchema: SchemaOf<IDoctorRequest> = yup.object().shape({
   crm: yup.string().required(),
   specialtie: yup.string().required()
 });
+
+export const specialtiesCreateSchema: SchemaOf<ISpecialtyRequest> = yup.object().shape({
+  name: yup.string().required()
+})
