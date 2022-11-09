@@ -24,6 +24,7 @@ export const mockedDoctor: IDoctorRequest = {
   birth_date: "2005/08/20",
   cpf: "42353456436",
   crm: "23423534666",
+  specialtie: "Cardiologista",
 };
 
 export const mockedPatientLogin: ISession = {

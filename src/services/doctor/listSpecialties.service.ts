@@ -11,6 +11,10 @@ const listSpecialtiesService = async () => {
     throw new AppError(403, "Specialties not found");
   }
 
+  specialtiesFind.forEach((elem) => {
+    elem.doctor?.forEach(doctor => delete doctor.password)
+  })
+
   return specialtiesFind;
 };
 

@@ -18,5 +18,5 @@ export class Specialties {
   @OneToMany((type) => Doctor, (doctor) => doctor.specialties, {
     eager: true,
   })
-  doctor: Doctor[];
+  doctor?: Doctor[];
 }
