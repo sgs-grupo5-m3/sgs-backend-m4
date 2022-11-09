@@ -43,11 +43,8 @@ const createSessionService = async ({
         subject: doctor.id,
       }
     );
-      
-    return {
-        token,
-        isDoctor: doctor.isDoctor
-    };
+
+    return { token, isDoctor: doctor.isDoctor };
   }
 
   if (patient) {
@@ -68,10 +65,7 @@ const createSessionService = async ({
       }
     );
 
-    return {
-      token,
-      isDoctor: patient.isDoctor
-  };
+    return { token, isDoctor: patient.isDoctor };
   }
 };
 
