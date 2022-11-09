@@ -11,6 +11,10 @@ const createDiseaseService = async ({
   const diseaseRepositorey = AppDataSource.getRepository(Disease);
   const patientRepositorey = AppDataSource.getRepository(Patient);
 
+  if(symptoms === ""){
+    symptoms = undefined
+  }
+
   const patientFind = await patientRepositorey.findOneBy({
     id: userId,
   });
