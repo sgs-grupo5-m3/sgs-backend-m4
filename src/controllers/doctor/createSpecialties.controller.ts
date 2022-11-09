@@ -1,8 +1,9 @@
 import { Request, Response } from "express";
+import { ISpecialtyRequest } from "../../interfaces/doctor";
 import createSpecialtiesService from "../../services/doctor/createSpecialties.service";
 
 const createSpecialtiesController = async (req: Request, res: Response) => {
-  const { name } = req.body;
+  const { name } = req.validatedBody as ISpecialtyRequest;
 
   const specialty = await createSpecialtiesService({
     name,

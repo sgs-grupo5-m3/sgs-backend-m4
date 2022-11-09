@@ -3,6 +3,7 @@ import { AppDataSource } from "../../data-source";
 import { Doctor } from "../../entities/doctor.entity";
 import { hashSync } from "bcrypt"
 import { Specialties } from "../../entities/specialties.entity";
+import { AppError } from "../../errors/appError";
 
 const createDoctorService = async ({ name, birth_date, email, password, cpf, crm, specialtie }: IDoctorRequest): Promise<Doctor> => {
     const doctorRepository = AppDataSource.getRepository(Doctor);
@@ -11,6 +12,10 @@ const createDoctorService = async ({ name, birth_date, email, password, cpf, crm
     const specialties = await specialtiesRepository.findOneBy({
         name: specialtie
     })
+
+    if(!specialties){
+        throw new AppError(403, "Specialties not found")
+    }
 
     const doctor = await doctorRepository.save({
         name: name,
