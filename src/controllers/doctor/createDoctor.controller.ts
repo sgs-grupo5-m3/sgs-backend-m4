@@ -16,6 +16,9 @@ const createDoctorController = async (req: Request, res: Response) => {
     specialtie,
   });
 
+  delete doctor.password
+  delete doctor.specialties.doctor
+
   return res.status(201).json({
     message: "Doctor Created!!",
     doctor,

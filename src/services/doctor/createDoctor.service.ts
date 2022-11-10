@@ -13,7 +13,7 @@ const createDoctorService = async ({
   cpf,
   crm,
   specialtie,
-}: IDoctorRequest): Promise<Object> => {
+}: IDoctorRequest): Promise<Doctor> => {
   const doctorRepository = AppDataSource.getRepository(Doctor);
   const specialtiesRepository = AppDataSource.getRepository(Specialties);
 
@@ -35,16 +35,7 @@ const createDoctorService = async ({
         specialties: specialties!
     });
 
-  const doctorResponse = {
-    name: name,
-    birth_date: birth_date,
-    email: email,
-    cpf: cpf,
-    crm: crm,
-    specialties: specialtie,
-  };
-
-  return doctorResponse;
+  return doctor;
 };
 
 export default createDoctorService;
