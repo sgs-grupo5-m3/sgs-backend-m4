@@ -91,13 +91,9 @@ application/json`
 ### Example request:
 
 ```
-curl "https://api-sgs-28.herokuapp.com/login" \
-  -H 'Content-Type: application/json' \
-  -X POST \
-  -d '{
   "email": "test@email.com",
   "password": "123456"
-}' 
+} 
 ```
 
 ## Profile
@@ -289,10 +285,7 @@ Body json
 ```
 Example request:
 ```
-curl "https://api-sgs-28.herokuapp.com/doctor" \
-  -H 'Content-Type: application/json' \
-  -X POST \
-  -d '{
+{
   "name": "Giovani",
   "birth_date": "1998/08/29",
   "email": "giovani@email.com",
@@ -344,11 +337,8 @@ Body json
 ```
 Example request:
 ```
-curl "https://api-sgs-28.herokuapp.com/doctor/specialties" \
-  -H 'Content-Type: application/json' \
-  -X POST \
-  -d '{
-  "name": ""
+{
+  "name": "Clinico"
 }
 
 ```
@@ -376,8 +366,8 @@ Retorno esperado
 ```
 Example request:
 ```
-curl "https://api-sgs-28.herokuapp.com/doctor/specialties" \
-  -X GET 
+ "https://api-sgs-28.herokuapp.com/doctor/specialties" \
+  
 ``` 
 ## `GET` List Pacient
 `https://api-sgs-28.herokuapp.com/doctor/patient
